@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/china-logo.png</file>
+        <file>image/password.png</file>
+        <file>image/signup-across.png</file>
+        <file>image/username.png</file>
+        <file>image/welcome.png</file>
+        <file>Data/DividendDataFormCollection.xlsx</file>
+        <file>Data/PROP.xlsx</file>
+        <file>Data/RTGS.xlsx</file>
+        <file>Data/shanghaihighquery.xlsx</file>
+        <file>Data/user.xlsx</file>
+    </qresource>
+</RCC>
