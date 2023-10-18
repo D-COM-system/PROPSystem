@@ -3,6 +3,11 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QStandardItem>
+#include <QStandardItemModel>
+#include <QModelIndex>
+#include <QPointer>
+
 
 namespace Ui {
 class dashboard;
@@ -18,10 +23,14 @@ public:
 
 private slots:
     void toggleDropDown();
+    void on_treeView_clicked(const QModelIndex &index);
 
 private:
     Ui::dashboard *ui;
-    bool animationRunning;
+    QPointer<QStandardItemModel> navigation_model;
+    QStandardItem * setting_item;
+    QStandardItem * setting_item1;
+    QStandardItem * setting_item2;
 };
 
 #endif // DASHBOARD_H

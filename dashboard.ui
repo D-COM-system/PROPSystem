@@ -40,6 +40,9 @@
     <property name="text">
      <string>欢迎使用</string>
     </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="enabled">
@@ -55,6 +58,9 @@
     </property>
     <property name="text">
      <string>用户代码：XXXXX</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton">
@@ -98,6 +104,9 @@
     <property name="text">
      <string>操作员：XXXX</string>
     </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QToolButton" name="toolButton_3">
     <property name="geometry">
@@ -108,8 +117,15 @@
       <height>21</height>
      </rect>
     </property>
-    <property name="text">
-     <string>...</string>
+    <property name="icon">
+     <iconset resource="image.qrc">
+      <normaloff>:/image/close.png</normaloff>:/image/close.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>21</height>
+     </size>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_4">
@@ -121,8 +137,15 @@
       <height>21</height>
      </rect>
     </property>
-    <property name="text">
-     <string>...</string>
+    <property name="icon">
+     <iconset resource="image.qrc">
+      <normaloff>:/image/rewindow.png</normaloff>:/image/rewindow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>21</height>
+     </size>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_6">
@@ -134,8 +157,15 @@
       <height>21</height>
      </rect>
     </property>
-    <property name="text">
-     <string>...</string>
+    <property name="icon">
+     <iconset resource="image.qrc">
+      <normaloff>:/image/minit.png</normaloff>:/image/minit.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>21</height>
+     </size>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_5">
@@ -147,30 +177,37 @@
       <height>21</height>
      </rect>
     </property>
-    <property name="text">
-     <string>...</string>
+    <property name="icon">
+     <iconset resource="image.qrc">
+      <normaloff>:/image/help.png</normaloff>:/image/help.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>21</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>1600</x>
+      <x>1560</x>
       <y>0</y>
-      <width>75</width>
+      <width>151</width>
       <height>23</height>
      </rect>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/image/PROPcombobox.png);</string>
     </property>
    </widget>
   </widget>
   <widget class="QWidget" name="widget_2" native="true">
    <property name="geometry">
     <rect>
-     <x>1320</x>
+     <x>1160</x>
      <y>20</y>
-     <width>571</width>
+     <width>731</width>
      <height>80</height>
     </rect>
    </property>
@@ -178,121 +215,423 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>0</y>
-      <width>61</width>
-      <height>80</height>
+      <y>10</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>清算管理</string>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextUnderIcon</enum>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_8">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>0</y>
-      <width>61</width>
-      <height>80</height>
+      <x>100</x>
+      <y>10</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>交收管理</string>
+    </property>
+    <property name="icon">
+     <iconset resource="image.qrc">
+      <normaloff>:/image/settetcontrol.png</normaloff>:/image/settetcontrol.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextUnderIcon</enum>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_9">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>0</y>
-      <width>61</width>
-      <height>80</height>
+      <x>190</x>
+      <y>10</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>资金存管2.0</string>
+    </property>
+    <property name="icon">
+     <iconset resource="image.qrc">
+      <normaloff>:/image/savecontrol.png</normaloff>:/image/savecontrol.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextUnderIcon</enum>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_10">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>0</y>
-      <width>61</width>
-      <height>80</height>
+      <x>280</x>
+      <y>10</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>证券账户管理</string>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_11">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>0</y>
-      <width>61</width>
-      <height>80</height>
+      <x>370</x>
+      <y>10</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>证券登记</string>
+    </property>
+    <property name="icon">
+     <iconset resource="image.qrc">
+      <normaloff>:/image/reso.png</normaloff>:/image/reso.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextUnderIcon</enum>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_12">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>0</y>
-      <width>61</width>
-      <height>80</height>
+      <x>460</x>
+      <y>10</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>风险管理</string>
+    </property>
+    <property name="icon">
+     <iconset resource="image.qrc">
+      <normaloff>:/image/dangercontrol.png</normaloff>:/image/dangercontrol.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextUnderIcon</enum>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_13">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>0</y>
-      <width>61</width>
-      <height>80</height>
+      <x>550</x>
+      <y>10</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>在线业务受理
+系统</string>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton_14">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>0</y>
-      <width>61</width>
-      <height>80</height>
+      <x>640</x>
+      <y>10</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>...</string>
+     <string>公共服务</string>
     </property>
    </widget>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QWidget" name="widget_3" native="true">
    <property name="geometry">
     <rect>
-     <x>940</x>
-     <y>310</y>
-     <width>221</width>
+     <x>0</x>
+     <y>20</y>
+     <width>1920</width>
+     <height>1041</height>
+    </rect>
+   </property>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>231</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/PROPlogo.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>150</y>
+      <width>231</width>
+      <height>891</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QTreeView" name="treeView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>231</width>
+        <height>861</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_8">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>820</y>
+        <width>113</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>常用菜单   </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_15">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>231</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>公共服务</string>
+      </property>
+      <property name="icon">
+       <iconset resource="image.qrc">
+        <normaloff>:/image/dashboard.png</normaloff>:/image/dashboard.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextBesideIcon</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2"/>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>0</y>
+      <width>1691</width>
+      <height>1041</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="page_3">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <widget class="QFrame" name="frame_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1691</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/publicservertop.png);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>110</y>
+        <width>1691</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame_3">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>115</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/newmessage.png);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_6">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>110</y>
+        <width>1241</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>当前没有信息</string>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame_4">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>320</y>
+        <width>741</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/welcomedashboard.png);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_4"/>
+   </widget>
+   <zorder>stackedWidget_2</zorder>
+   <zorder>frame</zorder>
+   <zorder>stackedWidget</zorder>
+  </widget>
+  <widget class="QWidget" name="widget_4" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>1060</y>
+     <width>1920</width>
      <height>21</height>
     </rect>
    </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
+   <widget class="QLineEdit" name="lineEdit_4">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>0</y>
+      <width>481</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string>中国证券登记结算有限责任公司上海分公司版权所有Copyright@2007-2018</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_5">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>0</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/china-logo.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
   </widget>
+  <zorder>widget</zorder>
+  <zorder>widget_3</zorder>
+  <zorder>widget_4</zorder>
+  <zorder>widget_2</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections/>
 </ui>

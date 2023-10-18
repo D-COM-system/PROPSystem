@@ -10,5 +10,27 @@
         <file>Data/RTGS.xlsx</file>
         <file>Data/shanghaihighquery.xlsx</file>
         <file>Data/user.xlsx</file>
+        <file>image/dashboard.png</file>
+        <file>image/messageserver.png</file>
+        <file>image/systemfix.png</file>
+        <file>image/usercontrol.png</file>
+        <file>image/accountcontrol.png</file>
+        <file>image/close.png</file>
+        <file>image/dangercontrol.png</file>
+        <file>image/help.png</file>
+        <file>image/minit.png</file>
+        <file>image/online.png</file>
+        <file>image/PROPcombobox.png</file>
+        <file>image/PROPlogo.png</file>
+        <file>image/reso.png</file>
+        <file>image/rewindow.png</file>
+        <file>image/settetcontrol.png</file>
+        <file>image/savecontrol.png</file>
+        <file>image/publicservertop.png</file>
+        <file>image/newmessage.png</file>
+        <file>image/welcomedashboard.png</file>
+        <file>qss/dashboard.qss</file>
+        <file>image/closemenu.png</file>
+        <file>image/openmenu.png</file>
     </qresource>
 </RCC>
