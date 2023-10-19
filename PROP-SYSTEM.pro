@@ -21,6 +21,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     MaximumAmountRegularDeclaration.cpp \
     dashboard.cpp \
+    deliveryManager.cpp \
     globaldata.cpp \
     main.cpp \
     riskManagement.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
 HEADERS += \
     MaximumAmountRegularDeclaration.h \
     dashboard.h \
+    deliveryManager.h \
     globaldata.h \
     riskManagement.h \
     toast.h \
@@ -39,6 +41,7 @@ HEADERS += \
 FORMS += \
     MaximumAmountRegularDeclaration.ui \
     dashboard.ui \
+    deliveryManager.ui \
     riskManagement.ui \
     widget.ui
 

@@ -5,6 +5,8 @@
 #include "ui_riskManagement.h"
 #include "MaximumAmountRegularDeclaration.h"
 #include "ui_MaximumAmountRegularDeclaration.h"
+#include "deliveryManager.h"
+#include "ui_deliveryManager.h"
 
 #include <QWidget>
 #include <QPushButton>
@@ -32,6 +34,7 @@ private slots:
     void on_treeView_clicked(const QModelIndex &index);
     void mousePressEvent(QMouseEvent *event);
     void on_toolButton_12_clicked();
+    void on_toolButton_8_clicked();
 
 public slots:
     void handleGoToPage(QString);
@@ -40,6 +43,7 @@ private:
     Ui::dashboard *ui;
     riskManagement *riskmanagement;
     MaximumAmountRegularDeclaration *maximumamountregulardeclaration;
+    deliveryManager *deliverymanager;
     QPointer<QStandardItemModel> navigation_model;
     QStandardItem * setting_item;
     QStandardItem * setting_item1;

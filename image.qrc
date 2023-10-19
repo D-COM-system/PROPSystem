@@ -34,5 +34,11 @@
         <file>image/openmenu.png</file>
         <file>image/riskmanagertop.png</file>
         <file>image/nuigron.png</file>
+        <file>image/delivery-manager.png</file>
+        <file>image/delivery-query.png</file>
+        <file>image/deliverytop.png</file>
+        <file>image/liquidation-relation.png</file>
+        <file>image/rent-unit.png</file>
+        <file>image/RTGS-manager.png</file>
     </qresource>
 </RCC>

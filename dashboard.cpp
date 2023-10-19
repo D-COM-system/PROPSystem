@@ -21,7 +21,7 @@ dashboard::dashboard(QWidget *parent) :
     ui->treeView->setFocusPolicy(Qt::NoFocus);
     ui->treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->treeView->setIconSize(QSize(18, 18));
-//    ui->treeView->setRootIsDecorated(false);    // 设置顶级节点无折叠/展开小图标
+    ui->treeView->setRootIsDecorated(false);    // 设置顶级节点无折叠/展开小图标
     ui->treeView->setIndentation(24);           // 父节点与子节点之间的水平距离
 
     setting_item = new QStandardItem(QIcon(":/image/usercontrol.png"), tr("用户管理"));
@@ -51,6 +51,7 @@ dashboard::dashboard(QWidget *parent) :
 
     connect(ui->pushButton, &QPushButton::clicked, this, &dashboard::toggleDropDown);
     connect(ui->toolButton_12, &QPushButton::clicked, this, &dashboard::on_toolButton_12_clicked);
+    connect(ui->toolButton_8, &QPushButton::clicked, this, &dashboard::on_toolButton_8_clicked);
 }
 
 dashboard::~dashboard()
@@ -110,3 +111,16 @@ void dashboard::handleGoToPage(QString data) {
         ui->stackedWidget_2->setCurrentWidget(maximumamountregulardeclarationpage_3);
     }
 }
+
+void dashboard::on_toolButton_8_clicked()
+{
+    // 处理点击事件
+    deliverymanager = new deliveryManager(this);
+    QWidget *deliverymanagerpage = deliverymanager->ui->page;
+    QWidget *deliverymanagerpage_3 = deliverymanager->ui->page_3;
+    ui->stackedWidget->addWidget(deliverymanagerpage);
+    ui->stackedWidget->setCurrentWidget(deliverymanagerpage);
+    ui->stackedWidget_2->addWidget(deliverymanagerpage_3);
+    ui->stackedWidget_2->setCurrentWidget(deliverymanagerpage_3);
+}
+
