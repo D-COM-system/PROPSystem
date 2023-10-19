@@ -21,6 +21,8 @@ public:
     explicit riskManagement(QWidget *parent = nullptr);
     ~riskManagement();
 
+
+
 private slots:
     void on_treeView_clicked(const QModelIndex &index);
 
@@ -33,6 +35,9 @@ public:
     QStandardItem * setting_item3;
     QStandardItem * setting_item4;
     QStandardItem * setting_item5;
+
+signals:
+    void goToPage(QString);
 };
 
 #endif // RISKMANAGEMENT_H

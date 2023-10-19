@@ -98,5 +98,15 @@ void dashboard::on_toolButton_12_clicked()
     ui->stackedWidget->setCurrentWidget(riskmanagementpage);
     ui->stackedWidget_2->addWidget(riskmanagementpage_3);
     ui->stackedWidget_2->setCurrentWidget(riskmanagementpage_3);
+    connect(riskmanagement, &riskManagement::goToPage, this, &dashboard::handleGoToPage);
 }
 
+void dashboard::handleGoToPage(QString data) {
+    qDebug() << data;
+    if(data == "最高额度常规申报") {
+        maximumamountregulardeclaration = new MaximumAmountRegularDeclaration(this);
+        QWidget *maximumamountregulardeclarationpage_3 = maximumamountregulardeclaration->ui->page_3;
+        ui->stackedWidget_2->addWidget(maximumamountregulardeclarationpage_3);
+        ui->stackedWidget_2->setCurrentWidget(maximumamountregulardeclarationpage_3);
+    }
+}

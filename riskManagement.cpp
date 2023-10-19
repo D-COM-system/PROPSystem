@@ -7,7 +7,6 @@ riskManagement::riskManagement(QWidget *parent) :
 {
     ui->setupUi(this);
     //    ui->widget->setFixedSize(1000,500);
-    ui->widget_2->setVisible(false);
 
     navigation_model = new QStandardItemModel(this);
     ui->treeView->setModel(navigation_model);
@@ -80,8 +79,11 @@ void riskManagement::on_treeView_clicked(const QModelIndex &index)
     }
     QStandardItem* clickedItem = navigation_model->itemFromIndex(index);
     if (clickedItem && !clickedItem->hasChildren()) {
-        QString itemText = clickedItem->text();
+        QString itemText = clickedItem->text().trimmed();
         qDebug() << "Clicked item text: " << itemText;
+        if(itemText == "最高额度常规申报") {
+            emit goToPage(itemText);
+        }
     }
 }
 

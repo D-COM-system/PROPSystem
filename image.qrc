@@ -33,5 +33,6 @@
         <file>image/closemenu.png</file>
         <file>image/openmenu.png</file>
         <file>image/riskmanagertop.png</file>
+        <file>image/nuigron.png</file>
     </qresource>
 </RCC>

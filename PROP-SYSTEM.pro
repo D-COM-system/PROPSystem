@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    MaximumAmountRegularDeclaration.cpp \
     dashboard.cpp \
     globaldata.cpp \
     main.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
     widget.cpp
 
 HEADERS += \
+    MaximumAmountRegularDeclaration.h \
     dashboard.h \
     globaldata.h \
     riskManagement.h \
@@ -35,6 +37,7 @@ HEADERS += \
     widget.h
 
 FORMS += \
+    MaximumAmountRegularDeclaration.ui \
     dashboard.ui \
     riskManagement.ui \
     widget.ui
