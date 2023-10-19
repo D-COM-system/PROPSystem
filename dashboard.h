@@ -1,13 +1,18 @@
 #ifndef DASHBOARD_H
 #define DASHBOARD_H
 
+#include "riskManagement.h"
+#include "ui_riskManagement.h"
+
+
 #include <QWidget>
 #include <QPushButton>
 #include <QStandardItem>
 #include <QStandardItemModel>
 #include <QModelIndex>
 #include <QPointer>
-
+#include <QMouseEvent>
+#include <QDebug>
 
 namespace Ui {
 class dashboard;
@@ -24,9 +29,12 @@ public:
 private slots:
     void toggleDropDown();
     void on_treeView_clicked(const QModelIndex &index);
+    void mousePressEvent(QMouseEvent *event);
+    void on_toolButton_12_clicked();
 
 private:
     Ui::dashboard *ui;
+    riskManagement *riskmanagement;
     QPointer<QStandardItemModel> navigation_model;
     QStandardItem * setting_item;
     QStandardItem * setting_item1;

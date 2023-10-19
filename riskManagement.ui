@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>dashboard</class>
- <widget class="QWidget" name="dashboard">
+ <class>riskManagement</class>
+ <widget class="QWidget" name="riskManagement">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -202,6 +202,192 @@
     </property>
    </widget>
   </widget>
+  <widget class="QWidget" name="widget_3" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>30</y>
+     <width>1920</width>
+     <height>1031</height>
+    </rect>
+   </property>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>231</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/PROPlogo.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>150</y>
+      <width>231</width>
+      <height>891</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QTreeView" name="treeView">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>231</width>
+        <height>861</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_15">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>231</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>风险管理</string>
+      </property>
+      <property name="icon">
+       <iconset resource="image.qrc">
+        <normaloff>:/image/dashboard.png</normaloff>:/image/dashboard.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextBesideIcon</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2"/>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>0</y>
+      <width>1691</width>
+      <height>1041</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="page_3">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <widget class="QFrame" name="frame_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1691</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/riskmanagertop.png);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>110</y>
+        <width>1691</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame_3">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>115</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/newmessage.png);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_6">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>110</y>
+        <width>1241</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>当前没有信息</string>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame_4">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>320</y>
+        <width>741</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/image/welcomedashboard.png);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_4"/>
+   </widget>
+   <zorder>stackedWidget_2</zorder>
+   <zorder>frame</zorder>
+   <zorder>stackedWidget</zorder>
+  </widget>
   <widget class="QWidget" name="widget_2" native="true">
    <property name="geometry">
     <rect>
@@ -372,208 +558,6 @@
     </property>
    </widget>
   </widget>
-  <widget class="QWidget" name="widget_3" native="true">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>20</y>
-     <width>1920</width>
-     <height>1041</height>
-    </rect>
-   </property>
-   <widget class="QFrame" name="frame">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>231</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: url(:/image/PROPlogo.png);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-   </widget>
-   <widget class="QStackedWidget" name="stackedWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>150</y>
-      <width>231</width>
-      <height>891</height>
-     </rect>
-    </property>
-    <widget class="QWidget" name="page">
-     <widget class="QTreeView" name="treeView">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>30</y>
-        <width>231</width>
-        <height>861</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_8">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>820</y>
-        <width>113</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>常用菜单   </string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="toolButton_15">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>231</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>公共服务</string>
-      </property>
-      <property name="icon">
-       <iconset resource="image.qrc">
-        <normaloff>:/image/dashboard.png</normaloff>:/image/dashboard.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonTextBesideIcon</enum>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_2"/>
-   </widget>
-   <widget class="QStackedWidget" name="stackedWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>0</y>
-      <width>1691</width>
-      <height>1041</height>
-     </rect>
-    </property>
-    <widget class="QWidget" name="page_3">
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
-     </property>
-     <widget class="QFrame" name="frame_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1691</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/publicservertop.png);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_5">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>110</y>
-        <width>1691</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="frame">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QFrame" name="frame_3">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>115</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/newmessage.png);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>450</x>
-        <y>110</y>
-        <width>1241</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>当前没有信息</string>
-      </property>
-      <property name="frame">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QFrame" name="frame_4">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>320</y>
-        <width>741</width>
-        <height>431</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image: url(:/image/welcomedashboard.png);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_4"/>
-   </widget>
-   <zorder>stackedWidget_2</zorder>
-   <zorder>frame</zorder>
-   <zorder>stackedWidget</zorder>
-  </widget>
   <widget class="QWidget" name="widget_4" native="true">
    <property name="geometry">
     <rect>
@@ -589,7 +573,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>770</x>
       <y>0</y>
       <width>481</width>
       <height>23</height>
@@ -625,10 +609,6 @@
     </property>
    </widget>
   </widget>
-  <zorder>widget</zorder>
-  <zorder>widget_3</zorder>
-  <zorder>widget_4</zorder>
-  <zorder>widget_2</zorder>
  </widget>
  <resources>
   <include location="image.qrc"/>

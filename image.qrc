@@ -32,5 +32,6 @@
         <file>qss/dashboard.qss</file>
         <file>image/closemenu.png</file>
         <file>image/openmenu.png</file>
+        <file>image/riskmanagertop.png</file>
     </qresource>
 </RCC>

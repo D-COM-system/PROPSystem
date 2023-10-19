@@ -22,6 +22,7 @@ SOURCES += \
     dashboard.cpp \
     globaldata.cpp \
     main.cpp \
+    riskManagement.cpp \
     toast.cpp \
     user.cpp \
     widget.cpp
@@ -29,11 +30,13 @@ SOURCES += \
 HEADERS += \
     dashboard.h \
     globaldata.h \
+    riskManagement.h \
     toast.h \
     widget.h
 
 FORMS += \
     dashboard.ui \
+    riskManagement.ui \
     widget.ui
 
 # Default rules for deployment.

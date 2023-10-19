@@ -36,14 +36,14 @@ QTreeView::branch:!has-children:!has-siblings:adjoins-item {
 QTreeView::branch:has-children:!has-siblings:closed,
 QTreeView::branch:closed:has-children:has-siblings {
     border-image: none;
-    /* image: url(:/images/tree/branch-closed.svg); */
-    image: none;
+    image: url(:/image/openmenu.png);
+    /*image: none;*/
 }
 QTreeView::branch:open:has-children:!has-siblings,
 QTreeView::branch:open:has-children:has-siblings  {
     border-image: none;
-    /* image: url(:/images/tree/branch-open.svg); */
-    image: none;
+    image: url(:/image/closemenu.png);
+    /*image: none;*/
 }
 QTreeView::indicator {
     width: 20px;

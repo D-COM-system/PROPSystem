@@ -21,21 +21,21 @@ dashboard::dashboard(QWidget *parent) :
     ui->treeView->setFocusPolicy(Qt::NoFocus);
     ui->treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->treeView->setIconSize(QSize(18, 18));
-    ui->treeView->setRootIsDecorated(false);    // 设置顶级节点无折叠/展开小图标
+//    ui->treeView->setRootIsDecorated(false);    // 设置顶级节点无折叠/展开小图标
     ui->treeView->setIndentation(24);           // 父节点与子节点之间的水平距离
 
     setting_item = new QStandardItem(QIcon(":/image/usercontrol.png"), tr("用户管理"));
-    setting_item->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item->appendRow(new QStandardItem("防误间隔配置"));
+    setting_item->appendRow(new QStandardItem("防误间隔配置1"));
+    setting_item->appendRow(new QStandardItem("防误间隔配置2"));
+    setting_item->appendRow(new QStandardItem("防误间隔配置3"));
+    setting_item->appendRow(new QStandardItem("防误间隔配置4"));
     navigation_model->appendRow(setting_item);
 
     setting_item1 = new QStandardItem(QIcon(":/image/systemfix.png"), tr("系统维护"));
-    setting_item1->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item1->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item1->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item1->appendRow(new QStandardItem("防误间隔配置"));
+    setting_item1->appendRow(new QStandardItem("防误间隔配置5"));
+    setting_item1->appendRow(new QStandardItem("防误间隔配置6"));
+    setting_item1->appendRow(new QStandardItem("防误间隔配置7"));
+    setting_item1->appendRow(new QStandardItem("防误间隔配置8"));
     navigation_model->appendRow(setting_item1);
 
     setting_item2 = new QStandardItem(QIcon(":/image/messageserver.png"), tr("短信订阅服务"));
@@ -46,11 +46,11 @@ dashboard::dashboard(QWidget *parent) :
     navigation_model->appendRow(setting_item2);
 //    打开菜单
 //    ui->treeView->expandAll();
-
     // signals and slots
     connect(navigation_model, SIGNAL(itemChanged(QStandardItem *)), this, SLOT(slot_item_changed(QStandardItem *)));
 
     connect(ui->pushButton, &QPushButton::clicked, this, &dashboard::toggleDropDown);
+    connect(ui->toolButton_12, &QPushButton::clicked, this, &dashboard::on_toolButton_12_clicked);
 }
 
 dashboard::~dashboard()
@@ -63,6 +63,16 @@ void dashboard::toggleDropDown()
     ui->widget_2->setVisible(!(ui->widget_2->isVisible()));
 }
 
+void dashboard::mousePressEvent(QMouseEvent *event)
+{
+    if (!ui->widget_2->geometry().contains(event->pos()))
+    {
+        // 点击widget_2以外的区域，关闭widget_2的显示
+        ui->widget_2->setVisible(false);
+    }
+    QWidget::mousePressEvent(event);
+}
+
 
 void dashboard::on_treeView_clicked(const QModelIndex &index)
 {
@@ -70,29 +80,23 @@ void dashboard::on_treeView_clicked(const QModelIndex &index)
     {
         ui->treeView->isExpanded(index) ? ui->treeView->collapse(index) : ui->treeView->expand(index);
     }
-//    QModelIndex setting_item_index = navigation_model->indexFromItem(setting_item);
-    QModelIndex setting_item1_index = navigation_model->indexFromItem(setting_item1);
-    QModelIndex setting_item2_index = navigation_model->indexFromItem(setting_item2);
-//    if (ui->treeView->isExpanded(setting_item_index)) {
-//        // 处理处于打开状态的情况
-//        setting_item->setIcon(QIcon(":/image/closemenu.png"));
-//    } else {
-//        // 处理未打开状态的情况
-//        setting_item->setIcon(QIcon(":/image/openmenu.png"));
-//    }
-    if (ui->treeView->isExpanded(setting_item1_index)) {
-        // 处理处于打开状态的情况
-        setting_item1->setIcon(QIcon(":/image/closemenu.png"));
-    } else {
-        // 处理未打开状态的情况
-        setting_item1->setIcon(QIcon(":/image/openmenu.png"));
+    QStandardItem* clickedItem = navigation_model->itemFromIndex(index);
+    if (clickedItem && !clickedItem->hasChildren()) {
+        QString itemText = clickedItem->text();
+        qDebug() << "Clicked item text: " << itemText;
     }
-    if (ui->treeView->isExpanded(setting_item2_index)) {
-        // 处理处于打开状态的情况
-        setting_item2->setIcon(QIcon(":/image/closemenu.png"));
-    } else {
-        // 处理未打开状态的情况
-        setting_item2->setIcon(QIcon(":/image/openmenu.png"));
-    }
+}
+
+
+void dashboard::on_toolButton_12_clicked()
+{
+    // 处理点击事件
+    riskmanagement = new riskManagement(this);
+    QWidget *riskmanagementpage = riskmanagement->ui->page;
+    QWidget *riskmanagementpage_3 = riskmanagement->ui->page_3;
+    ui->stackedWidget->addWidget(riskmanagementpage);
+    ui->stackedWidget->setCurrentWidget(riskmanagementpage);
+    ui->stackedWidget_2->addWidget(riskmanagementpage_3);
+    ui->stackedWidget_2->setCurrentWidget(riskmanagementpage_3);
 }
 
