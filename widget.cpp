@@ -67,8 +67,10 @@ void Widget::login()
         }
         if (query.next()) {
             // 找到匹配的数据记录
-            QString cusNumberResult = query.value("cusNumber").toString();
-            setCusNumber(cusNumberResult);
+            QString operatorAccountResult = query.value("operatorAccount").toString();
+            setOperatorAccount(operatorAccountResult);
+            QString idResult = query.value("userID").toString();
+            setUserID(idResult);
             Toast::instance().show(Toast::INFO, "登录成功！");
             this->hide();
             emit showdashboard();
@@ -87,7 +89,10 @@ void Widget::setUserName(const QString& data) {
     globalUserName = data;
 };
 
-void Widget::setCusNumber(const QString& data) {
-    globalCusNumber = data;
+void Widget::setOperatorAccount(const QString& data) {
+    globalOperatorAccount = data;
 };
 
+void Widget::setUserID(const QString& data) {
+    globalUserId = data;
+};

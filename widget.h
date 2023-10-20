@@ -28,6 +28,7 @@ signals:
 
 public:
     void setUserName(const QString& data);
-    void setCusNumber(const QString& data);
+    void setOperatorAccount(const QString& data);
+    void setUserID(const QString& data);
 };
 #endif // WIDGET_H

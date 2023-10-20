@@ -19,7 +19,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AShareDividendDifferentiatedDeclaration.cpp \
     MaximumAmountRegularDeclaration.cpp \
+    SecuritiesRegistrationtop.cpp \
     dashboard.cpp \
     deliveryManager.cpp \
     globaldata.cpp \
@@ -30,7 +32,9 @@ SOURCES += \
     widget.cpp
 
 HEADERS += \
+    AShareDividendDifferentiatedDeclaration.h \
     MaximumAmountRegularDeclaration.h \
+    SecuritiesRegistrationtop.h \
     dashboard.h \
     deliveryManager.h \
     globaldata.h \
@@ -39,7 +43,9 @@ HEADERS += \
     widget.h
 
 FORMS += \
+    AShareDividendDifferentiatedDeclaration.ui \
     MaximumAmountRegularDeclaration.ui \
+    SecuritiesRegistrationtop.ui \
     dashboard.ui \
     deliveryManager.ui \
     riskManagement.ui \

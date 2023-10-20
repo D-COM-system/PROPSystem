@@ -1,6 +1,8 @@
 #ifndef MAXIMUMAMOUNTREGULARDECLARATION_H
 #define MAXIMUMAMOUNTREGULARDECLARATION_H
 
+#include "globaldata.h"
+
 #include <QTableWidget>
 #include <QWidget>
 
@@ -30,6 +32,7 @@ private slots:
     void nextPageButton_clicked();
     void topPageButton_clicked();
     void bottomPageButton_clicked();
+    void on_pushButton_21_clicked();
 };
 
 #endif // MAXIMUMAMOUNTREGULARDECLARATION_H

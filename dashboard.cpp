@@ -50,6 +50,7 @@ dashboard::dashboard(QWidget *parent) :
     connect(navigation_model, SIGNAL(itemChanged(QStandardItem *)), this, SLOT(slot_item_changed(QStandardItem *)));
 
     connect(ui->pushButton, &QPushButton::clicked, this, &dashboard::toggleDropDown);
+    //分支页面跳转
     connect(ui->toolButton_12, &QPushButton::clicked, this, &dashboard::on_toolButton_12_clicked);
     connect(ui->toolButton_8, &QPushButton::clicked, this, &dashboard::on_toolButton_8_clicked);
 }
@@ -102,6 +103,7 @@ void dashboard::on_toolButton_12_clicked()
     connect(riskmanagement, &riskManagement::goToPage, this, &dashboard::handleGoToPage);
 }
 
+//分支子页面跳转
 void dashboard::handleGoToPage(QString data) {
     qDebug() << data;
     if(data == "最高额度常规申报") {
@@ -109,6 +111,12 @@ void dashboard::handleGoToPage(QString data) {
         QWidget *maximumamountregulardeclarationpage_3 = maximumamountregulardeclaration->ui->page_3;
         ui->stackedWidget_2->addWidget(maximumamountregulardeclarationpage_3);
         ui->stackedWidget_2->setCurrentWidget(maximumamountregulardeclarationpage_3);
+    }
+    if(data == "A股红利税差别化申报") {
+        asharedividenddifferentiateddeclaration = new AShareDividendDifferentiatedDeclaration(this);
+        QWidget *asharedividenddifferentiateddeclarationpage_3 = asharedividenddifferentiateddeclaration->ui->page_3;
+        ui->stackedWidget_2->addWidget(asharedividenddifferentiateddeclarationpage_3);
+        ui->stackedWidget_2->setCurrentWidget(asharedividenddifferentiateddeclarationpage_3);
     }
 }
 
@@ -122,5 +130,19 @@ void dashboard::on_toolButton_8_clicked()
     ui->stackedWidget->setCurrentWidget(deliverymanagerpage);
     ui->stackedWidget_2->addWidget(deliverymanagerpage_3);
     ui->stackedWidget_2->setCurrentWidget(deliverymanagerpage_3);
+}
+
+
+void dashboard::on_toolButton_11_clicked()
+{
+    // 处理点击事件
+    securitiesregistrationtop = new SecuritiesRegistrationtop(this);
+    QWidget *securitiesregistrationtoppage = securitiesregistrationtop->ui->page;
+    QWidget *securitiesregistrationtoppage_3 = securitiesregistrationtop->ui->page_3;
+    ui->stackedWidget->addWidget(securitiesregistrationtoppage);
+    ui->stackedWidget->setCurrentWidget(securitiesregistrationtoppage);
+    ui->stackedWidget_2->addWidget(securitiesregistrationtoppage_3);
+    ui->stackedWidget_2->setCurrentWidget(securitiesregistrationtoppage_3);
+    connect(securitiesregistrationtop, &SecuritiesRegistrationtop::goToPage, this, &dashboard::handleGoToPage);
 }
 

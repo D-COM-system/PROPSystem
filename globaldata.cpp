@@ -1,5 +1,6 @@
 // GlobalData.cpp
 #include "GlobalData.h"
 
+QString globalUserId;
 QString globalUserName;
-QString globalCusNumber;
+QString globalOperatorAccount;

@@ -26,7 +26,12 @@ void createUser(QString excelFilePath, QString dirPath)
     QXlsx::Worksheet* sheet = excelFile.currentWorksheet();
 
     QSqlQuery query;
-    QString createQuery = "CREATE TABLE PROPUser (username varchar(20) primary key ,password varchar(20),cusNumber varchar(20))";
+    QString createQuery = "CREATE TABLE PROPUser ("
+                          "userID INTEGER PRIMARY KEY AUTOINCREMENT,"
+                          "username VARCHAR(20),"
+                          "password VARCHAR(20),"
+                          "operatorAccount VARCHAR(20)"
+                          ")";
     if (!query.exec(createQuery)) {
         qDebug() << "创建表失败：" << query.lastError().text();
         return;
@@ -37,23 +42,23 @@ void createUser(QString excelFilePath, QString dirPath)
     for (int row = 2; row <= sheet->dimension().lastRow(); ++row) {
         QString username = sheet->read(row, 1).toString();
         QString password = sheet->read(row, 2).toString();
-        QString cusNumber = sheet->read(row, 3).toString();
+        QString operatorAccount = sheet->read(row, 3).toString();
 
         // 检查所有元素是否都为空
-        if (username.isEmpty() && password.isEmpty() && cusNumber.isEmpty()) {
+        if (username.isEmpty() && password.isEmpty() && operatorAccount.isEmpty()) {
             continue;  // 跳过当前行，不执行插入操作
         }
 
-        QString insertQuery = "INSERT INTO PROPUser (username, password, cusNumber) "
+        QString insertQuery = "INSERT INTO PROPUser (username, password, operatorAccount) "
                               "VALUES (?, ?, ?)";
         query.prepare(insertQuery);
         query.addBindValue(username);
         query.addBindValue(password);
-        query.addBindValue(cusNumber);
+        query.addBindValue(operatorAccount);
 
         if (createTableSuccess && !query.exec()) {
             qDebug() << "插入数据失败：" << query.lastError().text();
-            createTableSuccess = false;
+                                                       createTableSuccess = false;
         }
 
         if (!createTableSuccess) {

@@ -4,8 +4,9 @@
 
 #include <QString>
 
+extern QString globalUserId;
 extern QString globalUserName;
-extern QString globalCusNumber;
+extern QString globalOperatorAccount;
 
 
 #endif // GLOBALDATA_H

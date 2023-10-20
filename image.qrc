@@ -40,5 +40,8 @@
         <file>image/liquidation-relation.png</file>
         <file>image/rent-unit.png</file>
         <file>image/RTGS-manager.png</file>
+        <file>image/accessibility.png</file>
+        <file>image/dividends.png</file>
+        <file>image/securitiesregistrationtop.png</file>
     </qresource>
 </RCC>
