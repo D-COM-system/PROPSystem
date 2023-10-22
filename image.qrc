@@ -43,5 +43,16 @@
         <file>image/accessibility.png</file>
         <file>image/dividends.png</file>
         <file>image/securitiesregistrationtop.png</file>
+        <file>image/B-fund.png</file>
+        <file>image/fundconfirm.png</file>
+        <file>image/fundin.png</file>
+        <file>image/fundmanagementyop.png</file>
+        <file>image/fundtransfer.png</file>
+        <file>image/messagequery.png</file>
+        <file>image/open-upfund.png</file>
+        <file>image/pre-transfer.png</file>
+        <file>image/quotationsys.png</file>
+        <file>image/redemption.png</file>
+        <file>image/refinancing.png</file>
     </qresource>
 </RCC>
