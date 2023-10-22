@@ -13,6 +13,8 @@
 #include "ui_AShareDividendDifferentiatedDeclaration.h"
 #include "rtgsdeclaration.h"
 #include "ui_rtgsdeclaration.h"
+#include "fundmanagement.h"
+#include "ui_fundmanagement.h"
 
 #include <QWidget>
 #include <QPushButton>
@@ -41,7 +43,7 @@ private slots:
     void mousePressEvent(QMouseEvent *event);
     void on_toolButton_12_clicked();
     void on_toolButton_8_clicked();
-
+    void on_toolButton_9_clicked();
     void on_toolButton_11_clicked();
 
 public slots:
@@ -54,6 +56,7 @@ private:
     deliveryManager *deliverymanager;
     SecuritiesRegistrationtop *securitiesregistrationtop;
     RTGSdeclaration *rtgsdeclaration;
+    FundManagement *fundmanagement;
     AShareDividendDifferentiatedDeclaration *asharedividenddifferentiateddeclaration;
     QPointer<QStandardItemModel> navigation_model;
     QStandardItem * setting_item;

@@ -139,6 +139,18 @@ void dashboard::on_toolButton_8_clicked()
     connect(deliverymanager, &deliveryManager::goToPage, this, &dashboard::handleGoToPage);
 }
 
+void dashboard::on_toolButton_9_clicked()
+{
+    // 处理点击事件
+    fundmanagement = new FundManagement(this);
+    QWidget *fundmanagementpage = fundmanagement->ui->page;
+    QWidget *fundmanagementpage_3 = fundmanagement->ui->page_3;
+    ui->stackedWidget->addWidget(fundmanagementpage);
+    ui->stackedWidget->setCurrentWidget(fundmanagementpage);
+    ui->stackedWidget_2->addWidget(fundmanagementpage_3);
+    ui->stackedWidget_2->setCurrentWidget(fundmanagementpage_3);
+    connect(fundmanagement, &FundManagement::goToPage, this, &dashboard::handleGoToPage);
+}
 
 void dashboard::on_toolButton_11_clicked()
 {
