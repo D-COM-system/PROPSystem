@@ -84,7 +84,7 @@ void deliveryManager::on_treeView_clicked(const QModelIndex &index)
     if (clickedItem && !clickedItem->hasChildren()) {
         QString itemText = clickedItem->text().trimmed();
         qDebug() << "Clicked item text: " << itemText;
-        if(itemText == "最高额度常规申报") {
+        if(itemText == "RTGS勾单指令申报") {
             emit goToPage(itemText);
         }
     }

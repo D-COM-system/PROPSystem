@@ -11,6 +11,8 @@
 #include "ui_SecuritiesRegistrationtop.h"
 #include "AShareDividendDifferentiatedDeclaration.h"
 #include "ui_AShareDividendDifferentiatedDeclaration.h"
+#include "rtgsdeclaration.h"
+#include "ui_rtgsdeclaration.h"
 
 #include <QWidget>
 #include <QPushButton>
@@ -51,6 +53,7 @@ private:
     MaximumAmountRegularDeclaration *maximumamountregulardeclaration;
     deliveryManager *deliverymanager;
     SecuritiesRegistrationtop *securitiesregistrationtop;
+    RTGSdeclaration *rtgsdeclaration;
     AShareDividendDifferentiatedDeclaration *asharedividenddifferentiateddeclaration;
     QPointer<QStandardItemModel> navigation_model;
     QStandardItem * setting_item;

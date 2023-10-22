@@ -118,6 +118,12 @@ void dashboard::handleGoToPage(QString data) {
         ui->stackedWidget_2->addWidget(asharedividenddifferentiateddeclarationpage_3);
         ui->stackedWidget_2->setCurrentWidget(asharedividenddifferentiateddeclarationpage_3);
     }
+    if(data == "RTGS勾单指令申报") {
+        rtgsdeclaration = new RTGSdeclaration(this);
+        QWidget *rtgsdeclarationpage_3 = rtgsdeclaration->ui->page_3;
+        ui->stackedWidget_2->addWidget(rtgsdeclarationpage_3);
+        ui->stackedWidget_2->setCurrentWidget(rtgsdeclarationpage_3);
+    }
 }
 
 void dashboard::on_toolButton_8_clicked()
@@ -130,6 +136,7 @@ void dashboard::on_toolButton_8_clicked()
     ui->stackedWidget->setCurrentWidget(deliverymanagerpage);
     ui->stackedWidget_2->addWidget(deliverymanagerpage_3);
     ui->stackedWidget_2->setCurrentWidget(deliverymanagerpage_3);
+    connect(deliverymanager, &deliveryManager::goToPage, this, &dashboard::handleGoToPage);
 }
 
 

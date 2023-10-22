@@ -27,6 +27,7 @@ SOURCES += \
     globaldata.cpp \
     main.cpp \
     riskManagement.cpp \
+    rtgsdeclaration.cpp \
     toast.cpp \
     user.cpp \
     widget.cpp
@@ -39,6 +40,7 @@ HEADERS += \
     deliveryManager.h \
     globaldata.h \
     riskManagement.h \
+    rtgsdeclaration.h \
     toast.h \
     widget.h
 
@@ -49,6 +51,7 @@ FORMS += \
     dashboard.ui \
     deliveryManager.ui \
     riskManagement.ui \
+    rtgsdeclaration.ui \
     widget.ui
 
 # Default rules for deployment.
