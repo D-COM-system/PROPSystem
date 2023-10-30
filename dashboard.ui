@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1920</width>
-    <height>1080</height>
+    <height>1060</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -409,6 +409,9 @@
       <height>891</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(241, 241, 241);</string>
+    </property>
     <widget class="QWidget" name="page">
      <widget class="QTreeView" name="treeView">
       <property name="geometry">
@@ -416,7 +419,7 @@
         <x>0</x>
         <y>30</y>
         <width>231</width>
-        <height>861</height>
+        <height>840</height>
        </rect>
       </property>
      </widget>
@@ -578,10 +581,13 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>1060</y>
+     <y>1040</y>
      <width>1920</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(241, 241, 241);</string>
    </property>
    <widget class="QLineEdit" name="lineEdit_4">
     <property name="enabled">
@@ -627,8 +633,8 @@
   </widget>
   <zorder>widget</zorder>
   <zorder>widget_3</zorder>
-  <zorder>widget_4</zorder>
   <zorder>widget_2</zorder>
+  <zorder>widget_4</zorder>
  </widget>
  <resources>
   <include location="image.qrc"/>

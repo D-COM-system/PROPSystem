@@ -24,6 +24,7 @@ SOURCES += \
     SecuritiesRegistrationtop.cpp \
     dashboard.cpp \
     deliveryManager.cpp \
+    fundbalancequery.cpp \
     fundmanagement.cpp \
     globaldata.cpp \
     main.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     SecuritiesRegistrationtop.h \
     dashboard.h \
     deliveryManager.h \
+    fundbalancequery.h \
     fundmanagement.h \
     globaldata.h \
     riskManagement.h \
@@ -52,6 +54,7 @@ FORMS += \
     SecuritiesRegistrationtop.ui \
     dashboard.ui \
     deliveryManager.ui \
+    fundbalancequery.ui \
     fundmanagement.ui \
     riskManagement.ui \
     rtgsdeclaration.ui \

@@ -124,6 +124,12 @@ void dashboard::handleGoToPage(QString data) {
         ui->stackedWidget_2->addWidget(rtgsdeclarationpage_3);
         ui->stackedWidget_2->setCurrentWidget(rtgsdeclarationpage_3);
     }
+    if(data == "资金余额查询") {
+        fundbalancequery = new FundBalanceQuery(this);
+        QWidget *fundbalancequerypage_3 = fundbalancequery->ui->page_3;
+        ui->stackedWidget_2->addWidget(fundbalancequerypage_3);
+        ui->stackedWidget_2->setCurrentWidget(fundbalancequerypage_3);
+    }
 }
 
 void dashboard::on_toolButton_8_clicked()

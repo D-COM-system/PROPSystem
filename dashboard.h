@@ -15,6 +15,8 @@
 #include "ui_rtgsdeclaration.h"
 #include "fundmanagement.h"
 #include "ui_fundmanagement.h"
+#include "fundbalancequery.h"
+#include "ui_fundbalancequery.h"
 
 #include <QWidget>
 #include <QPushButton>
@@ -57,6 +59,7 @@ private:
     SecuritiesRegistrationtop *securitiesregistrationtop;
     RTGSdeclaration *rtgsdeclaration;
     FundManagement *fundmanagement;
+    FundBalanceQuery *fundbalancequery;
     AShareDividendDifferentiatedDeclaration *asharedividenddifferentiateddeclaration;
     QPointer<QStandardItemModel> navigation_model;
     QStandardItem * setting_item;
