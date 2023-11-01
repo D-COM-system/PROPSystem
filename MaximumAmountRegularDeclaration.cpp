@@ -18,6 +18,11 @@ MaximumAmountRegularDeclaration::MaximumAmountRegularDeclaration(QWidget *parent
 {
     ui->setupUi(this);
 
+    QObject::connect(ui->pushButton_21, &QPushButton::clicked, [=]{
+        importSuccessEshade *shade = new importSuccessEshade(this);
+        shade->exec();
+    });
+
     QString dbName = "database.db";
     QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
     QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
@@ -29,7 +34,7 @@ MaximumAmountRegularDeclaration::MaximumAmountRegularDeclaration(QWidget *parent
     }
     // 执行查询
     QSqlQuery query;
-    QString createQuery = "CREATE TABLE historyHighQueryRecord (recordPeopleId INTEGER primary key ,"
+    QString createQuery = "CREATE TABLE historyHighQueryRecord (recordPeopleId varchar(64) primary key ,"
                           "institutionCodeResult varchar(20),"
                           "institutionNameResult varchar(50),"
                           "controlResult varchar(10),"

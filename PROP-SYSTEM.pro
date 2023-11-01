@@ -29,6 +29,7 @@ SOURCES += \
     fundbalancequery.cpp \
     fundmanagement.cpp \
     globaldata.cpp \
+    importSuccessEshade.cpp \
     main.cpp \
     riskManagement.cpp \
     rtgsdeclaration.cpp \
@@ -46,6 +47,7 @@ HEADERS += \
     fundbalancequery.h \
     fundmanagement.h \
     globaldata.h \
+    importSuccessEshade.h \
     riskManagement.h \
     rtgsdeclaration.h \
     toast.h \
@@ -59,6 +61,7 @@ FORMS += \
     deliveryManager.ui \
     fundbalancequery.ui \
     fundmanagement.ui \
+    importSuccessEshade.ui \
     riskManagement.ui \
     rtgsdeclaration.ui \
     widget.ui

@@ -27,7 +27,7 @@ void createUser(QString excelFilePath, QString dirPath)
 
     QSqlQuery query;
     QString createQuery = "CREATE TABLE PROPUser ("
-                          "userID INTEGER PRIMARY KEY AUTOINCREMENT,"
+                          "userID VARCHAR(64) PRIMARY KEY,"
                           "username VARCHAR(20),"
                           "password VARCHAR(20),"
                           "operatorAccount VARCHAR(20)"
@@ -40,25 +40,27 @@ void createUser(QString excelFilePath, QString dirPath)
     // Assuming the data starts from row 2 (skip header row)
     bool createTableSuccess = true;
     for (int row = 2; row <= sheet->dimension().lastRow(); ++row) {
+        QString GUID = QString::number(row - 1);
         QString username = sheet->read(row, 1).toString();
         QString password = sheet->read(row, 2).toString();
         QString operatorAccount = sheet->read(row, 3).toString();
 
         // 检查所有元素是否都为空
-        if (username.isEmpty() && password.isEmpty() && operatorAccount.isEmpty()) {
+        if (GUID.isEmpty() && username.isEmpty() && password.isEmpty() && operatorAccount.isEmpty()) {
             continue;  // 跳过当前行，不执行插入操作
         }
 
-        QString insertQuery = "INSERT INTO PROPUser (username, password, operatorAccount) "
-                              "VALUES (?, ?, ?)";
+        QString insertQuery = "INSERT INTO PROPUser (userID,username, password, operatorAccount) "
+                              "VALUES (?, ?, ?, ?)";
         query.prepare(insertQuery);
+        query.addBindValue(GUID);
         query.addBindValue(username);
         query.addBindValue(password);
         query.addBindValue(operatorAccount);
 
         if (createTableSuccess && !query.exec()) {
             qDebug() << "插入数据失败：" << query.lastError().text();
-                                                       createTableSuccess = false;
+            createTableSuccess = false;
         }
 
         if (!createTableSuccess) {

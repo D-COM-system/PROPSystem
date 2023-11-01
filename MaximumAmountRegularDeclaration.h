@@ -2,6 +2,7 @@
 #define MAXIMUMAMOUNTREGULARDECLARATION_H
 
 #include "globaldata.h"
+#include "importSuccessEshade.h"
 
 #include <QTableWidget>
 #include <QWidget>
