@@ -25,6 +25,7 @@ public:
     int pageSize;
     int totalRows;
     int totalPages;
+    QVector<int> selectedRows; // 存储选中的行索引
     void updateTableDisplay();
     void removeEmptyRows(QTableWidget *tableWidget);
 
@@ -33,7 +34,15 @@ private slots:
     void nextPageButton_clicked();
     void topPageButton_clicked();
     void bottomPageButton_clicked();
-    //void on_pushButton_21_clicked();
+    void selectRows();
+    void AllCheckbox(bool checked);
+    void onTextChanged();
+    void comboBoxAddItem();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
+
 signals:
     void goToPage(QString);
 };

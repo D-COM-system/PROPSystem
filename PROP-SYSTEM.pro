@@ -20,7 +20,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     AShareDividendDifferentiatedDeclaration.cpp \
+    CheckBoxHeaderView.cpp \
     MaximumAmountRegularDeclaration.cpp \
+    RTGS_instructions.cpp \
     SecuritiesRegistrationtop.cpp \
     dashboard.cpp \
     deliveryManager.cpp \
@@ -36,6 +38,7 @@ SOURCES += \
 
 HEADERS += \
     AShareDividendDifferentiatedDeclaration.h \
+    CheckBoxHeaderView.h \
     MaximumAmountRegularDeclaration.h \
     SecuritiesRegistrationtop.h \
     dashboard.h \
