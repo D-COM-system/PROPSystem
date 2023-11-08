@@ -24,6 +24,7 @@ SOURCES += \
     MaximumAmountRegularDeclaration.cpp \
     RTGS_instructions.cpp \
     SecuritiesRegistrationtop.cpp \
+    businessSubmissionsEshade.cpp \
     dashboard.cpp \
     deliveryManager.cpp \
     fundbalancequery.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     CheckBoxHeaderView.h \
     MaximumAmountRegularDeclaration.h \
     SecuritiesRegistrationtop.h \
+    businessSubmissionsEshade.h \
     dashboard.h \
     deliveryManager.h \
     fundbalancequery.h \
@@ -57,6 +59,7 @@ FORMS += \
     AShareDividendDifferentiatedDeclaration.ui \
     MaximumAmountRegularDeclaration.ui \
     SecuritiesRegistrationtop.ui \
+    businessSubmissionsEshade.ui \
     dashboard.ui \
     deliveryManager.ui \
     fundbalancequery.ui \

@@ -211,6 +211,9 @@
      <height>80</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(242, 242, 242);</string>
+   </property>
    <widget class="QToolButton" name="toolButton_7">
     <property name="geometry">
      <rect>

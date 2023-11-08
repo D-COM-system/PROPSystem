@@ -71,6 +71,7 @@ void Widget::login()
             setOperatorAccount(operatorAccountResult);
             QString idResult = query.value("userID").toString();
             setUserID(idResult);
+            qDebug() << globalUserId;
             Toast::instance().show(Toast::INFO, "登录成功！");
             this->hide();
             emit showdashboard();
@@ -87,12 +88,12 @@ void Widget::login()
 
 void Widget::setUserName(const QString& data) {
     globalUserName = data;
-};
+}
 
 void Widget::setOperatorAccount(const QString& data) {
     globalOperatorAccount = data;
-};
+}
 
 void Widget::setUserID(const QString& data) {
     globalUserId = data;
-};
+}

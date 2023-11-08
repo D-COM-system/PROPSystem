@@ -3,6 +3,7 @@
 
 #include "globaldata.h"
 #include "importSuccessEshade.h"
+#include "ui_importSuccessEshade.h"
 
 #include <QTableWidget>
 #include <QWidget>
@@ -29,11 +30,16 @@ public:
     void removeEmptyRows(QTableWidget *tableWidget);
 
 private slots:
+    void chooseFile();
     void previousPageButton_clicked();
     void nextPageButton_clicked();
     void topPageButton_clicked();
     void bottomPageButton_clicked();
-    void on_pushButton_21_clicked();
+    bool judgeFile();
+    void businessSubmissions();
+
+public:
+    void setImportNumber(const QString& data);
 };
 
 #endif // MAXIMUMAMOUNTREGULARDECLARATION_H
