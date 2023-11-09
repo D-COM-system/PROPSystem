@@ -21,11 +21,6 @@ MaximumAmountRegularDeclaration::MaximumAmountRegularDeclaration(QWidget *parent
 {
     ui->setupUi(this);
 
-    QObject::connect(ui->pushButton_17, &QPushButton::clicked, [=]{
-        importSuccessEshade *shade = new importSuccessEshade(this);
-        shade->exec();
-    });
-
     QString dbName = "database.db";
     QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
     QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
@@ -41,8 +36,8 @@ MaximumAmountRegularDeclaration::MaximumAmountRegularDeclaration(QWidget *parent
                           "institutionCodeResult varchar(20),"
                           "institutionNameResult varchar(50),"
                           "controlResult varchar(10),"
-                          "TotalAssetsResult varchar(20),"
-                          "MaxAccountResult varchar(20))";
+                          "TotalAssetsResult int(13),"
+                          "MaxAccountResult int(13))";
     if (!query.exec(createQuery)) {
         qDebug() << "创建表失败：" << query.lastError().text();
     }
@@ -60,7 +55,7 @@ MaximumAmountRegularDeclaration::MaximumAmountRegularDeclaration(QWidget *parent
     // 关闭数据库连接
     database.close();
     currentPage = 0,
-    pageSize = 10,
+    pageSize = 50,
     totalPages = ((totalRows + pageSize - 1) / pageSize);
     QStringList headerLabels;
     headerLabels << "机构代码" << "机构名称" << "控制类别" << "净资本/合计资产总额（百万）" << "最高额度（百万）";
@@ -68,7 +63,9 @@ MaximumAmountRegularDeclaration::MaximumAmountRegularDeclaration(QWidget *parent
     ui->tableWidget_2->setColumnCount(headerLabels.size());
     ui->tableWidget_2->setHorizontalHeaderLabels(headerLabels);
     ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableWidget_2->setRowCount(pageSize);
+    if(totalRows != 0) {
+        ui->tableWidget_2->setRowCount(pageSize);
+    }
     ui->tableWidget_2->verticalHeader()->hide();
     updateTableDisplay();
     connect(ui->pushButton_7, &QPushButton::clicked, this, &MaximumAmountRegularDeclaration::topPageButton_clicked);
@@ -117,13 +114,11 @@ void  MaximumAmountRegularDeclaration::chooseFile()
     }
     QString dbName = "database.db";
     QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
+    QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName(dbPath);
 
-    // Create a database connection
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbPath);
-
-    if (!db.open()) {
-        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
+    if (!database.open()) {
+        QMessageBox::critical(nullptr, "错误", "无法打开数据库：" + database.lastError().text());
         return;
     }
     qDebug() << nowFilePath;
@@ -139,12 +134,12 @@ void  MaximumAmountRegularDeclaration::chooseFile()
         QString institutionCodeResult = sheet->read(row, 1).toString();
         QString institutionNameResult = sheet->read(row, 2).toString();
         QString controlResult = sheet->read(row, 3).toString();
-        QString TotalAssetsResult = sheet->read(row, 4).toString();
-        QString MaxAccountResult = sheet->read(row, 5).toString();
+        int TotalAssetsResult = sheet->read(row, 4).toInt();
+        int MaxAccountResult = sheet->read(row, 5).toInt();
 
         // 检查所有元素是否都为空
         if (recordPeopleId.isEmpty() && institutionCodeResult.isEmpty() && institutionNameResult.isEmpty() && controlResult.isEmpty() &&
-            TotalAssetsResult.isEmpty() && MaxAccountResult.isEmpty()) {
+            TotalAssetsResult == 0 && MaxAccountResult == 0) {
             continue;  // 跳过当前行，不执行插入操作
         }
 
@@ -164,12 +159,27 @@ void  MaximumAmountRegularDeclaration::chooseFile()
             successInsert++;
         }
     }
+    query.prepare("SELECT COUNT(*) FROM historyHighQueryRecord WHERE recordPeopleId = :recordPeopleId");
+    query.bindValue(":recordPeopleId", globalUserId);
+    if (query.exec()) {
+        if (query.next()) {
+            totalRows = query.value(0).toInt();
+        }
+        // 删除空行
+    } else {
+        QMessageBox::critical(nullptr, "错误", "查询执行失败：" + query.lastError().text());
+        return;
+    }
+    // 关闭数据库连接
+    currentPage = 0,
+    pageSize = 50,
+    totalPages = ((totalRows + pageSize - 1) / pageSize);
     // Close the database connection
-    db.close();
-    updateTableDisplay();
+    database.close();
     setImportNumber(QString::number(successInsert));
     importSuccessEshade *shade = new importSuccessEshade(this);
     shade->exec();
+    updateTableDisplay();
 }
 
 void MaximumAmountRegularDeclaration::setImportNumber(const QString& data) {
@@ -248,13 +258,13 @@ void MaximumAmountRegularDeclaration::updateTableDisplay()
                 QString stateResult = query.value(1).toString();
                 QString institutionCodeResult = query.value(2).toString();
                 QString institutionNameResult = query.value(3).toString();
-                QString TotalAssetsResult = query.value(4).toString();
-                QString MaxAccountResult = query.value(5).toString();
+                int TotalAssetsResult = query.value(4).toInt();
+                int MaxAccountResult = query.value(5).toInt();
                 QTableWidgetItem *item1 = new QTableWidgetItem(stateResult);
                 QTableWidgetItem *item2 = new QTableWidgetItem(institutionCodeResult);
                 QTableWidgetItem *item3 = new QTableWidgetItem(institutionNameResult);
-                QTableWidgetItem *item4 = new QTableWidgetItem(TotalAssetsResult);
-                QTableWidgetItem *item5 = new QTableWidgetItem(MaxAccountResult);
+                QTableWidgetItem *item4 = new QTableWidgetItem(QString::number(TotalAssetsResult));
+                QTableWidgetItem *item5 = new QTableWidgetItem(QString::number(MaxAccountResult));
 
                 ui->tableWidget_2->setItem(rowIndex, 0, item1);
                 ui->tableWidget_2->setItem(rowIndex, 1, item2);
@@ -310,26 +320,74 @@ void MaximumAmountRegularDeclaration::businessSubmissions() {
         return;
     }
     QSqlQuery query;
-    query.prepare("SELECT * FROM historyHighQueryRecord WHERE recordPeopleId = :recordPeopleId");
+    query.prepare("SELECT ROWID,* FROM historyHighQueryRecord WHERE recordPeopleId = :recordPeopleId");
     query.bindValue(":recordPeopleId", globalUserId);
     if (query.exec()) {
         // 查询成功，将记录存储到全局变量中
         while (query.next()) {
-        QStringList record;
-        record << query.value(0).toString()
-               << query.value(1).toString()
-               << query.value(2).toString()
-               << query.value(3).toString()
-               << query.value(4).toString()
-               << query.value(5).toString();
-        businessSubmissionsList.append(record);
+            QStringList record;
+            record << query.value(0).toString()
+                   << query.value(1).toString()
+                   << query.value(2).toString()
+                   << query.value(3).toString()
+                   << query.value(4).toString()
+                   << query.value(5).toString()
+                   << query.value(6).toString();
+            businessSubmissionsList.append(record);
         }
     } else {
         return ;
     }
+
+//    qDebug() << businessSubmissionsList;
+    if (businessSubmissionsList.isEmpty()) {
+        QMessageBox::information(nullptr, "提示", "没有找到相关记录。");
+        // 关闭数据库连接
+        database.close();
+        return;
+    }
+    for (int row = 0; row < businessSubmissionsList.length(); ++row) {
+        QStringList record = businessSubmissionsList.at(row);
+        QString GUID = "";
+        QString importResultCode = "0000";
+        QString importResultState = "申报成功";
+        QString institutionCodeResult = record.at(2);
+        QString institutionNameResult = record.at(3);
+        QString controlResult = record.at(4);
+        int TotalAssetsResult = record.at(5).toInt();
+        int MaxAccountResult = record.at(6).toInt();
+
+        QString insertQuery = "INSERT INTO MaximumQuotaRoutineDeclarationDataTable (GUID,importResultCode, importResultState, institutionCodeResult,institutionNameResult,controlResult,TotalAssetsResult,MaxAccountResult) "
+                              "VALUES (? , ? , ? , ? , ? , ? , ?, ?)";
+
+        query.prepare(insertQuery);
+        query.addBindValue(GUID);
+        query.addBindValue(importResultCode);
+        query.addBindValue(importResultState);
+        query.addBindValue(institutionCodeResult);
+        query.addBindValue(institutionNameResult);
+        query.addBindValue(controlResult);
+        query.addBindValue(TotalAssetsResult);
+        query.addBindValue(MaxAccountResult);
+        if (!query.exec()) {
+            qDebug() << "插入数据失败：" << query.lastError().text();
+        }
+
+        QString deleteQuery = "DELETE FROM historyHighQueryRecord WHERE recordPeopleId = :recordPeopleId AND ROWID = :ROWID";
+        query.prepare(deleteQuery);
+        query.bindValue(":recordPeopleId", globalUserId);
+        query.bindValue(":ROWID", record.at(0));
+        if (!query.exec()) {
+            qDebug() << "删除数据失败：" << query.lastError().text();
+        }
+    }
     // 关闭数据库连接
     database.close();
-    qDebug() << businessSubmissionsList;
+    totalRows = 0;
+    updateTableDisplay();
+    // 创建并显示businessSubmissionsEshade对象
+    businessSubmissionsEshade *businessSubmissionsshade = new businessSubmissionsEshade(this);
+    businessSubmissionsshade->exec();
 }
 
 void MaximumAmountRegularDeclaration::topPageButton_clicked()

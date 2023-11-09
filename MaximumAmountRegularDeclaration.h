@@ -4,6 +4,8 @@
 #include "globaldata.h"
 #include "importSuccessEshade.h"
 #include "ui_importSuccessEshade.h"
+#include "businessSubmissionsEshade.h"
+#include "ui_businessSubmissionsEshade.h"
 
 #include <QTableWidget>
 #include <QWidget>

@@ -18,14 +18,11 @@ public:
     explicit businessSubmissionsEshade(QWidget *parent = nullptr);
     ~businessSubmissionsEshade();
 
-private slots:
-    void on_close_clicked();
-
 private:
-    void initStyle();
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+
 
 private:
     Ui::businessSubmissionsEshade *ui;
@@ -39,6 +36,14 @@ private:
     int totalPages; // 总页数
     void updateTableDisplay();
     void removeEmptyRows(QTableWidget *tableWidget);
+
+private slots:
+    void initStyle();
+    void previousPageButton_clicked();
+    void nextPageButton_clicked();
+    void topPageButton_clicked();
+    void bottomPageButton_clicked();
+    void on_close_clicked();
 };
 
 #endif // BUSINESSSUBMISSIONSESHADE_H

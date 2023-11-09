@@ -22,6 +22,7 @@ SOURCES += \
     AShareDividendDifferentiatedDeclaration.cpp \
     CheckBoxHeaderView.cpp \
     MaximumAmountRegularDeclaration.cpp \
+    MaximumQuotaRoutineDeclarationDataTable.cpp \
     RTGS_instructions.cpp \
     SecuritiesRegistrationtop.cpp \
     businessSubmissionsEshade.cpp \

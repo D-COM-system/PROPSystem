@@ -7,6 +7,12 @@ businessSubmissionsEshade::businessSubmissionsEshade(QWidget *parent) :
     ui(new Ui::businessSubmissionsEshade)
 {
     ui->setupUi(this);
+
+    totalRows = businessSubmissionsList.length();
+    currentPage = 0,
+    pageSize = 50,
+    totalPages = ((totalRows + pageSize - 1) / pageSize);
+
     QStringList headerLabels;
     headerLabels << "结果代码" << "结果说明" << "机构代码" << "机构名称" << "控制类别" << "净资本/合计资产总额（百万）" << "最高额度（百万）";
     ui->tableWidget_2->clear(); // 清空表格内容
@@ -15,11 +21,12 @@ businessSubmissionsEshade::businessSubmissionsEshade(QWidget *parent) :
     ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget_2->setRowCount(pageSize);
     ui->tableWidget_2->verticalHeader()->hide();
-    totalRows = businessSubmissionsList.length();
-    currentPage = 0,
-    pageSize = 10,
-    totalPages = ((totalRows + pageSize - 1) / pageSize);
-    updateTableDisplay();
+
+    initStyle();
+    connect(ui->pushButton_7, &QPushButton::clicked, this, &businessSubmissionsEshade::topPageButton_clicked);
+    connect(ui->pushButton_8, &QPushButton::clicked, this, &businessSubmissionsEshade::previousPageButton_clicked);
+    connect(ui->pushButton_9, &QPushButton::clicked, this, &businessSubmissionsEshade::nextPageButton_clicked);
+    connect(ui->pushButton_10, &QPushButton::clicked, this, &businessSubmissionsEshade::bottomPageButton_clicked);
 }
 
 businessSubmissionsEshade::~businessSubmissionsEshade()
@@ -31,7 +38,8 @@ void businessSubmissionsEshade::initStyle()
 {
     setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     setModal(true);
-    setStyleSheet("background: rgba(0, 0, 0, 0.8);");
+    setStyleSheet("background: rgba(212, 212, 212, 0.1);");
+    updateTableDisplay();
 }
 
 void businessSubmissionsEshade::mousePressEvent(QMouseEvent *event)
@@ -85,8 +93,16 @@ void businessSubmissionsEshade::updateTableDisplay() {
             QStringList record = databaseRecords.at(row + startRow);
             int columnCount = record.size();
             for (int column = 0; column < columnCount; ++column) {
-                QTableWidgetItem* item = new QTableWidgetItem(record.at(column));
-                ui->tableWidget_2->setItem(row, column, item);
+                if(column == 0) {
+                    QTableWidgetItem* item = new QTableWidgetItem("0000");
+                    ui->tableWidget_2->setItem(row, column, item);
+                } else if (column == 1) {
+                    QTableWidgetItem* item = new QTableWidgetItem("申报成功");
+                    ui->tableWidget_2->setItem(row, column, item);
+                } else {
+                    QTableWidgetItem* item = new QTableWidgetItem(record.at(column));
+                    ui->tableWidget_2->setItem(row, column, item);
+                }
             }
         }
         removeEmptyRows(ui->tableWidget_2);
@@ -119,4 +135,66 @@ void businessSubmissionsEshade::on_close_clicked()
 {
     // 关闭窗口前删除窗口实例
     deleteLater();
+}
+
+void businessSubmissionsEshade::topPageButton_clicked()
+{
+    if (currentPage != 0) {
+        currentPage = 0;
+        updateTableDisplay();
+    }
+    ui->pushButton_9->setEnabled(true);
+    ui->pushButton_10->setEnabled(true);
+    ui->pushButton_7->setEnabled(false);
+    ui->pushButton_8->setEnabled(false);
+}
+
+void businessSubmissionsEshade::previousPageButton_clicked()
+{
+    if (currentPage > 0) {
+        currentPage--;
+        updateTableDisplay();
+    }
+    if(currentPage != 0) {
+        ui->pushButton_7->setEnabled(true);
+        ui->pushButton_8->setEnabled(true);
+        ui->pushButton_9->setEnabled(true);
+        ui->pushButton_10->setEnabled(true);
+    } else {
+        ui->pushButton_9->setEnabled(true);
+        ui->pushButton_10->setEnabled(true);
+        ui->pushButton_7->setEnabled(false);
+        ui->pushButton_8->setEnabled(false);
+    }
+}
+
+void businessSubmissionsEshade::nextPageButton_clicked()
+{
+    if (currentPage < totalPages - 1) {
+        currentPage++;
+        updateTableDisplay();
+    }
+    if (currentPage != totalPages - 1) {
+        ui->pushButton_7->setEnabled(true);
+        ui->pushButton_8->setEnabled(true);
+        ui->pushButton_9->setEnabled(true);
+        ui->pushButton_10->setEnabled(true);
+    } else {
+        ui->pushButton_9->setEnabled(false);
+        ui->pushButton_10->setEnabled(false);
+        ui->pushButton_7->setEnabled(true);
+        ui->pushButton_8->setEnabled(true);
+    }
+}
+
+void businessSubmissionsEshade::bottomPageButton_clicked()
+{
+    if (currentPage != totalPages - 1) {
+        currentPage = totalPages - 1;
+        updateTableDisplay();
+    }
+    ui->pushButton_9->setEnabled(false);
+    ui->pushButton_10->setEnabled(false);
+    ui->pushButton_7->setEnabled(true);
+    ui->pushButton_8->setEnabled(true);
 }
