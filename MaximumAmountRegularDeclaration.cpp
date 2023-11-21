@@ -63,6 +63,14 @@ MaximumAmountRegularDeclaration::MaximumAmountRegularDeclaration(QWidget *parent
     ui->tableWidget_2->setColumnCount(headerLabels.size());
     ui->tableWidget_2->setHorizontalHeaderLabels(headerLabels);
     ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //让tableWidget内容中的每个元素居中
+    ui->tableWidget_2->setSelectionBehavior(QAbstractItemView::SelectRows);//设置整行选中
+    ui->tableWidget_2->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter);//表头字体居中
+    ui->tableWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);//单元格不可编辑
+    // 设置表头的底色和文字加粗
+    QString styleSheet = "QHeaderView::section { background-color: #f5f5f5; font-weight: bold; }";
+    // 将样式表应用于表格的表头
+    ui->tableWidget_2->horizontalHeader()->setStyleSheet(styleSheet);
     if(totalRows != 0) {
         ui->tableWidget_2->setRowCount(pageSize);
     }
@@ -271,6 +279,11 @@ void MaximumAmountRegularDeclaration::updateTableDisplay()
                 ui->tableWidget_2->setItem(rowIndex, 2, item3);
                 ui->tableWidget_2->setItem(rowIndex, 3, item4);
                 ui->tableWidget_2->setItem(rowIndex, 4, item5);
+                item1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                item2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                item3->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                item4->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                item5->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
 
                 ++rowIndex;
             }
@@ -384,6 +397,8 @@ void MaximumAmountRegularDeclaration::businessSubmissions() {
     // 关闭数据库连接
     database.close();
     totalRows = 0;
+    ui->tableWidget_2->clearContents(); // 清空表格内容
+    ui->tableWidget_2->setRowCount(totalRows);
     updateTableDisplay();
     // 创建并显示businessSubmissionsEshade对象
     businessSubmissionsEshade *businessSubmissionsshade = new businessSubmissionsEshade(this);

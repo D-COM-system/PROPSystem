@@ -1,13 +1,19 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "user.cpp"
+#include "AShareDividendDifferentiated.cpp"
+#include "AShareDividendDifferentiatedEshade.cpp"
+#include "AShareDividendDifferentiatedLogList.cpp"
 #include "RTGS_instructions.cpp"
 #include "MaximumQuotaRoutineDeclarationDataTable.cpp"
 #include "dashboard.h"
 
 #include <QApplication>
 #include <QCoreApplication>
+#include <QDir>
 #include <QFile>
+#include <QProcess>
+#include <QTextCodec>
 #include <QVBoxLayout>
 
 int main(int argc, char *argv[])
@@ -17,13 +23,15 @@ int main(int argc, char *argv[])
     createUser(":/Data/user.xlsx",QCoreApplication::applicationDirPath());
     createRTGS_instructions(":/Data/RTGS.xlsx",QCoreApplication::applicationDirPath());
     createMaximumQuotaRoutineDeclarationDataTable(":/Data/shanghaihighquery.xlsx",QCoreApplication::applicationDirPath());
+    createAShareDividendDifferentiated(QCoreApplication::applicationDirPath());
+    createAShareDividendDifferentiatedEshade(QCoreApplication::applicationDirPath());
+    createAShareDividendDifferentiatedLogList(QCoreApplication::applicationDirPath());
     QFile qssFile(":/qss/dashboard.qss");//1.
     if(qssFile.open(QFile::ReadOnly)){//2.
         a.setStyleSheet(qssFile.readAll());//3.
     }
     qssFile.close();
     Widget w;
-    // 去掉窗体的默认标题栏
 
     w.show();
     dashboard w2;

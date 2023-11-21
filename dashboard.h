@@ -65,6 +65,7 @@ private:
     QStandardItem * setting_item;
     QStandardItem * setting_item1;
     QStandardItem * setting_item2;
+    void setCentralWidget(QTreeView *);
 };
 
 #endif // DASHBOARD_H

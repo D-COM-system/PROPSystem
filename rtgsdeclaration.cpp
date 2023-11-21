@@ -66,6 +66,14 @@ RTGSdeclaration::RTGSdeclaration(QWidget *parent) :
     ui->tableWidget->setColumnCount(9);
     ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "勾选状态" << "交收编号" << "证券账户" << "资金账号" << "实际收付"<< "交收状态" << "结果代码" << "结果说明" << "交收时间");
     ui->tableWidget->setHorizontalHeader(header);
+    //让tableWidget内容中的每个元素居中
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);//设置整行选中
+    ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter);//表头字体居中
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);//单元格不可编辑
+    // 设置表头的底色和文字加粗
+    QString styleSheet = "QHeaderView::section { background-color: #f5f5f5; font-weight: bold; }";
+    // 将样式表应用于表格的表头
+    ui->tableWidget->horizontalHeader()->setStyleSheet(styleSheet);
 
     connect(header, &CheckBoxHeaderView::signalCheckStateChanged, [=](bool state)
             {
@@ -165,6 +173,12 @@ void RTGSdeclaration::updateTableDisplay()
                 ui->tableWidget->setItem(rowIndex, 3, item4);
                 ui->tableWidget->setItem(rowIndex, 4, item5);
                 ui->tableWidget->setItem(rowIndex, 5, item6);
+                item2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                item3->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                item4->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                item5->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                item6->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+
 
                 ++rowIndex;
             }

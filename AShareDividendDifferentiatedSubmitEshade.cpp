@@ -1,20 +1,20 @@
-#include "businessSubmissionsEshade.h"
+#include "AShareDividendDifferentiatedSubmitEshade.h"
 #include "GlobalData.h"
-#include "ui_businessSubmissionsEshade.h"
+#include "qdatetime.h"
+#include "ui_AShareDividendDifferentiatedSubmitEshade.h"
 
-businessSubmissionsEshade::businessSubmissionsEshade(QWidget *parent) :
+AShareDividendDifferentiatedSubmitEshade::AShareDividendDifferentiatedSubmitEshade(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::businessSubmissionsEshade)
+    ui(new Ui::AShareDividendDifferentiatedSubmitEshade)
 {
     ui->setupUi(this);
-
     totalRows = businessSubmissionsList.length();
     currentPage = 0,
     pageSize = 50,
     totalPages = ((totalRows + pageSize - 1) / pageSize);
 
     QStringList headerLabels;
-    headerLabels << "结果代码" << "结果说明" << "机构代码" << "机构名称" << "控制类别" << "净资本/合计资产总额（百万）" << "最高额度（百万）";
+    headerLabels << "SBBH" << "CLJG" << "FZDM" << "BY1" << "BY2" << "JGDM" << "JGSM" << "BZ";
     ui->tableWidget_2->clear(); // 清空表格内容
     ui->tableWidget_2->setColumnCount(headerLabels.size());
     ui->tableWidget_2->setHorizontalHeaderLabels(headerLabels);
@@ -29,20 +29,34 @@ businessSubmissionsEshade::businessSubmissionsEshade(QWidget *parent) :
     QString styleSheet = "QHeaderView::section { background-color: #f5f5f5; font-weight: bold; }";
     // 将样式表应用于表格的表头
     ui->tableWidget_2->horizontalHeader()->setStyleSheet(styleSheet);
+    // 获取当前时间
+    QDateTime currentTime = QDateTime::currentDateTime();
+
+    // 格式化时间为"YYYY-MM-DD HH:MM:SS"的字符串
+    QString formattedTime = currentTime.toString("yyyy-MM-dd hh:mm:ss");
+    // 将当前时间加一秒，并设置为resultTime
+    QDateTime nextTime = currentTime.addSecs(1);
+    QString resultTime = nextTime.toString("yyyy-MM-dd hh:mm:ss");
+
+    // 设置lineEdit_2的文本为当前时间
+    ui->lineEdit->setText("请求时间：" + formattedTime);
+    ui->lineEdit_2->setText("应答时间：" + resultTime);
+    ui->lineEdit_3->setText("处理结果：0000-申报成功");
+
 
     initStyle();
-    connect(ui->pushButton_7, &QPushButton::clicked, this, &businessSubmissionsEshade::topPageButton_clicked);
-    connect(ui->pushButton_8, &QPushButton::clicked, this, &businessSubmissionsEshade::previousPageButton_clicked);
-    connect(ui->pushButton_9, &QPushButton::clicked, this, &businessSubmissionsEshade::nextPageButton_clicked);
-    connect(ui->pushButton_10, &QPushButton::clicked, this, &businessSubmissionsEshade::bottomPageButton_clicked);
+    connect(ui->pushButton_7, &QPushButton::clicked, this, &AShareDividendDifferentiatedSubmitEshade::topPageButton_clicked);
+    connect(ui->pushButton_8, &QPushButton::clicked, this, &AShareDividendDifferentiatedSubmitEshade::previousPageButton_clicked);
+    connect(ui->pushButton_9, &QPushButton::clicked, this, &AShareDividendDifferentiatedSubmitEshade::nextPageButton_clicked);
+    connect(ui->pushButton_10, &QPushButton::clicked, this, &AShareDividendDifferentiatedSubmitEshade::bottomPageButton_clicked);
 }
 
-businessSubmissionsEshade::~businessSubmissionsEshade()
+AShareDividendDifferentiatedSubmitEshade::~AShareDividendDifferentiatedSubmitEshade()
 {
     delete ui;
 }
 
-void businessSubmissionsEshade::initStyle()
+void AShareDividendDifferentiatedSubmitEshade::initStyle()
 {
     setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     setModal(true);
@@ -50,7 +64,7 @@ void businessSubmissionsEshade::initStyle()
     updateTableDisplay();
 }
 
-void businessSubmissionsEshade::mousePressEvent(QMouseEvent *event)
+void AShareDividendDifferentiatedSubmitEshade::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
@@ -63,7 +77,7 @@ void businessSubmissionsEshade::mousePressEvent(QMouseEvent *event)
     }
 }
 
-void businessSubmissionsEshade::mouseMoveEvent(QMouseEvent *event)
+void AShareDividendDifferentiatedSubmitEshade::mouseMoveEvent(QMouseEvent *event)
 {
     if (_bDrag)
     {
@@ -74,7 +88,7 @@ void businessSubmissionsEshade::mouseMoveEvent(QMouseEvent *event)
     }
 }
 
-void businessSubmissionsEshade::mouseReleaseEvent(QMouseEvent *event)
+void AShareDividendDifferentiatedSubmitEshade::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
@@ -82,7 +96,7 @@ void businessSubmissionsEshade::mouseReleaseEvent(QMouseEvent *event)
     }
 }
 
-void businessSubmissionsEshade::updateTableDisplay() {
+void AShareDividendDifferentiatedSubmitEshade::updateTableDisplay() {
     if(totalRows == 0) {
         ui->label_3->setText("无数据显示");
     } else {
@@ -99,20 +113,33 @@ void businessSubmissionsEshade::updateTableDisplay() {
         // 遍历数据并设置单元格内容
         for (int row = 0; row < numRows; ++row) {
             QStringList record = databaseRecords.at(row + startRow);
-            int columnCount = record.size();
+            int columnCount = ui->tableWidget_2->columnCount();
             for (int column = 0; column < columnCount; ++column) {
-                if(column == 0) {
-                    QTableWidgetItem* item = new QTableWidgetItem("0000");
+                if(column == 0){
+                    QTableWidgetItem* item = new QTableWidgetItem(record.at(0));
                     ui->tableWidget_2->setItem(row, column, item);
                     item->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-                } else if (column == 1) {
-                    QTableWidgetItem* item = new QTableWidgetItem("申报成功");
-                    ui->tableWidget_2->setItem(row, column, item);
-                    item->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-                } else {
-                    QTableWidgetItem* item = new QTableWidgetItem(record.at(column));
-                    ui->tableWidget_2->setItem(row, column, item);
-                    item->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                } else if(column == 1) {
+                    QTableWidgetItem* item1 = new QTableWidgetItem("P");
+                    ui->tableWidget_2->setItem(row, column, item1);
+                    item1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                } else if(column == 2) {
+                    QTableWidgetItem* item2 = new QTableWidgetItem("HL");
+                    ui->tableWidget_2->setItem(row, column, item2);
+                    item2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                } else if(column == 3 || column == 4 || column == 7) {
+                    QTableWidgetItem* item3 = new QTableWidgetItem("");
+                    ui->tableWidget_2->setItem(row, column, item3);
+                    item3->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                }
+                else if(column == 5){
+                    QTableWidgetItem* item4 = new QTableWidgetItem("0000");
+                    ui->tableWidget_2->setItem(row, column, item4);
+                    item4->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                } else if(column == 6){
+                    QTableWidgetItem* item5 = new QTableWidgetItem("申报成功");
+                    ui->tableWidget_2->setItem(row, column, item5);
+                    item5->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
                 }
             }
         }
@@ -125,7 +152,7 @@ void businessSubmissionsEshade::updateTableDisplay() {
     }
 }
 
-void businessSubmissionsEshade::removeEmptyRows(QTableWidget *tableWidget) {
+void AShareDividendDifferentiatedSubmitEshade::removeEmptyRows(QTableWidget *tableWidget) {
     for (int row = tableWidget->rowCount() - 1; row >= 0; --row) {
         bool isEmptyRow = true;
         for (int column = 0; column < tableWidget->columnCount(); ++column) {
@@ -142,13 +169,13 @@ void businessSubmissionsEshade::removeEmptyRows(QTableWidget *tableWidget) {
     }
 }
 
-void businessSubmissionsEshade::on_close_clicked()
+void AShareDividendDifferentiatedSubmitEshade::on_close_clicked()
 {
     // 关闭窗口前删除窗口实例
     deleteLater();
 }
 
-void businessSubmissionsEshade::topPageButton_clicked()
+void AShareDividendDifferentiatedSubmitEshade::topPageButton_clicked()
 {
     if (currentPage != 0) {
         currentPage = 0;
@@ -160,7 +187,7 @@ void businessSubmissionsEshade::topPageButton_clicked()
     ui->pushButton_8->setEnabled(false);
 }
 
-void businessSubmissionsEshade::previousPageButton_clicked()
+void AShareDividendDifferentiatedSubmitEshade::previousPageButton_clicked()
 {
     if (currentPage > 0) {
         currentPage--;
@@ -179,7 +206,7 @@ void businessSubmissionsEshade::previousPageButton_clicked()
     }
 }
 
-void businessSubmissionsEshade::nextPageButton_clicked()
+void AShareDividendDifferentiatedSubmitEshade::nextPageButton_clicked()
 {
     if (currentPage < totalPages - 1) {
         currentPage++;
@@ -198,7 +225,7 @@ void businessSubmissionsEshade::nextPageButton_clicked()
     }
 }
 
-void businessSubmissionsEshade::bottomPageButton_clicked()
+void AShareDividendDifferentiatedSubmitEshade::bottomPageButton_clicked()
 {
     if (currentPage != totalPages - 1) {
         currentPage = totalPages - 1;
@@ -209,3 +236,4 @@ void businessSubmissionsEshade::bottomPageButton_clicked()
     ui->pushButton_7->setEnabled(true);
     ui->pushButton_8->setEnabled(true);
 }
+

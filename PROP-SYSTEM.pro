@@ -19,8 +19,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AShareDividendDifferentiated.cpp \
     AShareDividendDifferentiatedDeclaration.cpp \
+    AShareDividendDifferentiatedEshade.cpp \
+    AShareDividendDifferentiatedLogList.cpp \
+    AShareDividendDifferentiatedSubmitEshade.cpp \
     CheckBoxHeaderView.cpp \
+    CustomItemDelegate.cpp \
     MaximumAmountRegularDeclaration.cpp \
     MaximumQuotaRoutineDeclarationDataTable.cpp \
     RTGS_instructions.cpp \
@@ -41,7 +46,9 @@ SOURCES += \
 
 HEADERS += \
     AShareDividendDifferentiatedDeclaration.h \
+    AShareDividendDifferentiatedSubmitEshade.h \
     CheckBoxHeaderView.h \
+    CustomItemDelegate.h \
     MaximumAmountRegularDeclaration.h \
     SecuritiesRegistrationtop.h \
     businessSubmissionsEshade.h \
@@ -58,6 +65,7 @@ HEADERS += \
 
 FORMS += \
     AShareDividendDifferentiatedDeclaration.ui \
+    AShareDividendDifferentiatedSubmitEshade.ui \
     MaximumAmountRegularDeclaration.ui \
     SecuritiesRegistrationtop.ui \
     businessSubmissionsEshade.ui \

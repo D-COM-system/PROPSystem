@@ -227,11 +227,16 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>13</x>
+        <x>20</x>
         <y>140</y>
-        <width>1661</width>
+        <width>1641</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font:16px;
+background-color: #289bd5;
+color:white;</string>
       </property>
       <property name="text">
        <string>A股红利税差别化申报</string>
@@ -250,7 +255,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(85, 255, 127);</string>
+       <string notr="true">background-color: rgb(241, 241, 241);</string>
       </property>
       <widget class="QLabel" name="label_2">
        <property name="geometry">
@@ -258,8 +263,11 @@
          <x>0</x>
          <y>0</y>
          <width>1651</width>
-         <height>16</height>
+         <height>31</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font:24px;</string>
        </property>
        <property name="text">
         <string>交易文件</string>
@@ -398,7 +406,7 @@ width: 150px;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>830</y>
+         <y>800</y>
          <width>1621</width>
          <height>21</height>
         </rect>
@@ -411,7 +419,7 @@ width: 150px;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>570</y>
+         <y>540</y>
          <width>1621</width>
          <height>261</height>
         </rect>
@@ -447,8 +455,8 @@ width: 150px;</string>
        </property>
        <property name="geometry">
         <rect>
-         <x>720</x>
-         <y>470</y>
+         <x>730</x>
+         <y>430</y>
          <width>91</width>
          <height>51</height>
         </rect>
@@ -463,19 +471,6 @@ width: 150px;</string>
        </property>
        <property name="text">
         <string>提交</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_13">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>380</y>
-         <width>31</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>/2</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_9">
@@ -517,22 +512,6 @@ width: 150px;</string>
         <string>...</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_8">
-       <property name="geometry">
-        <rect>
-         <x>140</x>
-         <y>380</y>
-         <width>31</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>1</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
       <widget class="QPushButton" name="pushButton_11">
        <property name="geometry">
         <rect>
@@ -546,24 +525,11 @@ width: 150px;</string>
         <string>🞀</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_14">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>830</y>
-         <width>31</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>/2</string>
-       </property>
-      </widget>
       <widget class="QPushButton" name="pushButton_12">
        <property name="geometry">
         <rect>
-         <x>270</x>
-         <y>830</y>
+         <x>220</x>
+         <y>800</y>
          <width>24</width>
          <height>21</height>
         </rect>
@@ -575,8 +541,8 @@ width: 150px;</string>
       <widget class="QPushButton" name="pushButton_13">
        <property name="geometry">
         <rect>
-         <x>300</x>
-         <y>830</y>
+         <x>250</x>
+         <y>800</y>
          <width>24</width>
          <height>21</height>
         </rect>
@@ -588,8 +554,8 @@ width: 150px;</string>
       <widget class="QPushButton" name="pushButton_14">
        <property name="geometry">
         <rect>
-         <x>110</x>
-         <y>830</y>
+         <x>60</x>
+         <y>800</y>
          <width>24</width>
          <height>21</height>
         </rect>
@@ -598,27 +564,11 @@ width: 150px;</string>
         <string>...</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_9">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>830</y>
-         <width>31</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>1</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
       <widget class="QPushButton" name="pushButton_15">
        <property name="geometry">
         <rect>
-         <x>150</x>
-         <y>830</y>
+         <x>100</x>
+         <y>800</y>
          <width>24</width>
          <height>21</height>
         </rect>
@@ -631,38 +581,205 @@ width: 150px;</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>550</y>
+         <y>500</y>
          <width>1651</width>
-         <height>16</height>
+         <height>31</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font:24px;</string>
        </property>
        <property name="text">
         <string>交易日志</string>
        </property>
       </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>381</y>
+         <width>201</width>
+         <height>19</height>
+        </rect>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_5">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>380</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 1px solid #000000;</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="tabChangesFocus">
+        <bool>false</bool>
+       </property>
+       <property name="undoRedoEnabled">
+        <bool>true</bool>
+       </property>
+       <property name="acceptRichText">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>380</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 1px solid #000000; border-left-width: 0px;</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="tabChangesFocus">
+        <bool>false</bool>
+       </property>
+       <property name="undoRedoEnabled">
+        <bool>true</bool>
+       </property>
+       <property name="acceptRichText">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>801</y>
+         <width>201</width>
+         <height>19</height>
+        </rect>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_6">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>800</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 1px solid #000000;</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="tabChangesFocus">
+        <bool>false</bool>
+       </property>
+       <property name="undoRedoEnabled">
+        <bool>true</bool>
+       </property>
+       <property name="acceptRichText">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit_7">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>800</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 1px solid #000000; border-left-width: 0px;</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="tabChangesFocus">
+        <bool>false</bool>
+       </property>
+       <property name="undoRedoEnabled">
+        <bool>true</bool>
+       </property>
+       <property name="acceptRichText">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <zorder>undoView_3</zorder>
       <zorder>label_2</zorder>
       <zorder>lineEdit_7</zorder>
       <zorder>pushButton_5</zorder>
       <zorder>label_3</zorder>
       <zorder>pushButton_6</zorder>
-      <zorder>undoView_3</zorder>
       <zorder>undoView_4</zorder>
       <zorder>tableWidget_2</zorder>
       <zorder>tableWidget_3</zorder>
       <zorder>pushButton_7</zorder>
-      <zorder>lineEdit_13</zorder>
       <zorder>pushButton_9</zorder>
       <zorder>pushButton_10</zorder>
       <zorder>pushButton_8</zorder>
-      <zorder>lineEdit_8</zorder>
       <zorder>pushButton_11</zorder>
-      <zorder>lineEdit_14</zorder>
       <zorder>pushButton_12</zorder>
       <zorder>pushButton_13</zorder>
       <zorder>pushButton_14</zorder>
-      <zorder>lineEdit_9</zorder>
       <zorder>pushButton_15</zorder>
       <zorder>label_4</zorder>
+      <zorder>label_5</zorder>
+      <zorder>textEdit_5</zorder>
+      <zorder>textEdit_4</zorder>
+      <zorder>label_6</zorder>
+      <zorder>textEdit_6</zorder>
+      <zorder>textEdit_7</zorder>
      </widget>
     </widget>
     <widget class="QWidget" name="page_4"/>

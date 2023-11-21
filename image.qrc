@@ -54,5 +54,6 @@
         <file>image/quotationsys.png</file>
         <file>image/redemption.png</file>
         <file>image/refinancing.png</file>
+        <file>../../SHMXSB20230720.dbf</file>
     </qresource>
 </RCC>

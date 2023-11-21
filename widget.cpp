@@ -69,6 +69,8 @@ void Widget::login()
             // 找到匹配的数据记录
             QString operatorAccountResult = query.value("operatorAccount").toString();
             setOperatorAccount(operatorAccountResult);
+            QString nameResult = query.value("username").toString();
+            setUserName(nameResult);
             QString idResult = query.value("userID").toString();
             setUserID(idResult);
             qDebug() << globalUserId;

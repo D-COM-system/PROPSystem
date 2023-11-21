@@ -1,3 +1,4 @@
+#include "CustomItemDelegate.h"
 #include "dashboard.h"
 #include "ui_dashboard.h"
 
@@ -13,37 +14,53 @@ dashboard::dashboard(QWidget *parent) :
 {
     ui->setupUi(this);
 //    ui->widget->setFixedSize(1000,500);
+
     ui->widget_2->setVisible(false);
 
+//    navigation_model = new QStandardItemModel(this);
+//    ui->treeView->setModel(navigation_model);
+//    ui->treeView->setHeaderHidden(true);
+//    ui->treeView->setFocusPolicy(Qt::NoFocus);
+//    ui->treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+//    ui->treeView->setIconSize(QSize(18, 18));
+//    ui->treeView->setRootIsDecorated(false);    // 设置顶级节点无折叠/展开小图标
+//    ui->treeView->setIndentation(24);           // 父节点与子节点之间的水平距离
+
+//    setting_item = new QStandardItem(QIcon(":/image/usercontrol.png"), tr("用户管理"));
+//    setting_item->appendRow(new QStandardItem("防误间隔配置1"));
+//    setting_item->appendRow(new QStandardItem("防误间隔配置2"));
+//    setting_item->appendRow(new QStandardItem("防误间隔配置3"));
+//    setting_item->appendRow(new QStandardItem("防误间隔配置4"));
+//    navigation_model->appendRow(setting_item);
+
+//    setting_item1 = new QStandardItem(QIcon(":/image/systemfix.png"), tr("系统维护"));
+//    setting_item1->appendRow(new QStandardItem("防误间隔配置5"));
+//    setting_item1->appendRow(new QStandardItem("防误间隔配置6"));
+//    setting_item1->appendRow(new QStandardItem("防误间隔配置7"));
+//    setting_item1->appendRow(new QStandardItem("防误间隔配置8"));
+//    navigation_model->appendRow(setting_item1);
+
+//    setting_item2 = new QStandardItem(QIcon(":/image/messageserver.png"), tr("短信订阅服务"));
+//    setting_item2->appendRow(new QStandardItem("防误间隔配置"));
+//    setting_item2->appendRow(new QStandardItem("防误间隔配置"));
+//    setting_item2->appendRow(new QStandardItem("防误间隔配置"));
+//    setting_item2->appendRow(new QStandardItem("防误间隔配置"));
+//    navigation_model->appendRow(setting_item2);
     navigation_model = new QStandardItemModel(this);
+
     ui->treeView->setModel(navigation_model);
     ui->treeView->setHeaderHidden(true);
     ui->treeView->setFocusPolicy(Qt::NoFocus);
     ui->treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->treeView->setIconSize(QSize(18, 18));
-    ui->treeView->setRootIsDecorated(false);    // 设置顶级节点无折叠/展开小图标
-    ui->treeView->setIndentation(24);           // 父节点与子节点之间的水平距离
+    ui->treeView->setRootIsDecorated(false);
+    ui->treeView->setIndentation(24);
 
-    setting_item = new QStandardItem(QIcon(":/image/usercontrol.png"), tr("用户管理"));
-    setting_item->appendRow(new QStandardItem("防误间隔配置1"));
-    setting_item->appendRow(new QStandardItem("防误间隔配置2"));
-    setting_item->appendRow(new QStandardItem("防误间隔配置3"));
-    setting_item->appendRow(new QStandardItem("防误间隔配置4"));
-    navigation_model->appendRow(setting_item);
-
-    setting_item1 = new QStandardItem(QIcon(":/image/systemfix.png"), tr("系统维护"));
-    setting_item1->appendRow(new QStandardItem("防误间隔配置5"));
-    setting_item1->appendRow(new QStandardItem("防误间隔配置6"));
-    setting_item1->appendRow(new QStandardItem("防误间隔配置7"));
-    setting_item1->appendRow(new QStandardItem("防误间隔配置8"));
-    navigation_model->appendRow(setting_item1);
-
-    setting_item2 = new QStandardItem(QIcon(":/image/messageserver.png"), tr("短信订阅服务"));
-    setting_item2->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item2->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item2->appendRow(new QStandardItem("防误间隔配置"));
-    setting_item2->appendRow(new QStandardItem("防误间隔配置"));
-    navigation_model->appendRow(setting_item2);
+    QStandardItem* item = new QStandardItem();
+    item->setData(QIcon(":/image/usercontrol.png"), Qt::DecorationRole);
+    item->setData(QIcon(":/image/systemfix.png"), Qt::UserRole + 1);
+    item->setText("用户管理");
+    navigation_model->appendRow(item);
 //    打开菜单
 //    ui->treeView->expandAll();
     // signals and slots
