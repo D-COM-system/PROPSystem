@@ -26,7 +26,7 @@ AShareDividendDifferentiatedDeclaration::AShareDividendDifferentiatedDeclaration
 
     totalRows = 0;
     currentPage = 0,
-    pageSize = 5,
+    pageSize = 50,
     totalPages = ((totalRows + pageSize - 1) / pageSize);
 
     QString dbName = "database.db";
@@ -53,7 +53,7 @@ AShareDividendDifferentiatedDeclaration::AShareDividendDifferentiatedDeclaration
     // 关闭数据库连接
     database.close();
     currentPageLogList = 0,
-    pageSizeLogList = 5,
+    pageSizeLogList = 50,
     totalPagesLogList = ((totalRowsLogList + pageSizeLogList - 1) / pageSizeLogList);
 
     QStringList headerLabels;
@@ -67,13 +67,18 @@ AShareDividendDifferentiatedDeclaration::AShareDividendDifferentiatedDeclaration
     ui->tableWidget_2->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter);//表头字体居中
     ui->tableWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);//单元格不可编辑
     // 设置表头的底色和文字加粗
-    QString styleSheet = "QHeaderView::section { background-color: #f5f5f5; font-weight: bold; }";
+    QString styleSheet = "QHeaderView::section { background-color: rgb(219,241,253); font-weight: bold; border: 1px solid white; }";
     // 将样式表应用于表格的表头
     ui->tableWidget_2->horizontalHeader()->setStyleSheet(styleSheet);
     ui->tableWidget_2->verticalHeader()->hide();
+    QString styledText1 ="<font color='red'>" + QString::number(0) + "</font>";
+    QString styledText2 ="<font color='black'>/</font>""<font color='red'>" + QString::number(0) + "</font>";
+    ui->textEdit_5->setHtml(styledText1);
+    ui->textEdit_4->setHtml(styledText2);
+    ui->label_5->setText("无数据显示");
 
     headerLabels.clear();
-    headerLabels << "交易序号" << "操作员" << "日期" << "业务域名" << "业务名称" << "业务代码" << "返回代码" << "返回说明";
+    headerLabels << "交易序号" << "操作员" << "日期" << "时间" << "业务域名" << "业务名称" << "业务代码" << "返回代码" << "返回说明";
     ui->tableWidget_3->clear(); // 清空表格内容
     ui->tableWidget_3->setColumnCount(headerLabels.size());
     ui->tableWidget_3->setHorizontalHeaderLabels(headerLabels);
@@ -83,7 +88,7 @@ AShareDividendDifferentiatedDeclaration::AShareDividendDifferentiatedDeclaration
     ui->tableWidget_3->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter);//表头字体居中
     ui->tableWidget_3->setEditTriggers(QAbstractItemView::NoEditTriggers);//单元格不可编辑
     // 设置表头的底色和文字加粗
-    styleSheet = "QHeaderView::section { background-color: #f5f5f5; font-weight: bold; }";
+    styleSheet = "QHeaderView::section { background-color: rgb(219,241,253); font-weight: bold; border: 1px solid white; }";
     // 将样式表应用于表格的表头
     ui->tableWidget_3->horizontalHeader()->setStyleSheet(styleSheet);
     ui->tableWidget_3->verticalHeader()->hide();
@@ -173,7 +178,7 @@ void AShareDividendDifferentiatedDeclaration::importFile()
 
 void AShareDividendDifferentiatedDeclaration::updateTableDisplay() {
     if(totalRows == 0) {
-        ui->label_3->setText("无数据显示");
+        ui->label_5->setText("无数据显示");
     } else {
         // 获取全局变量中的数据
         QList<QStringList> databaseRecords = businessSubmissionsList;
@@ -433,13 +438,14 @@ void AShareDividendDifferentiatedDeclaration::submitData() {
     int numRows = endRow - startRow; // 当前页的行数
     totalRows = 0;
     currentPage = 0,
-    pageSize = 5,
+    pageSize = 50,
     totalPages = ((totalRows + pageSize - 1) / pageSize);
-    QString styledText1 ="<font color='red'>" + QString::number(currentPage + 1) + "</font>";
-    QString styledText2 ="<font color='black'>/</font>""<font color='red'>" + QString::number(totalPages) + "</font>";
-    ui->textEdit_5->setHtml(styledText1);
-    ui->textEdit_4->setHtml(styledText2);
-    ui->label_5->setText(QString::number(startRow) + "-" + QString::number(endRow) + "条，共" + QString::number(numRows) + "条");
+    ui->textEdit_5->setHtml(" ");
+    ui->textEdit_4->setHtml("");
+    ui->label_5->setText("无数据显示");
+    if(totalRowsLogList == 0) {
+        totalRowsLogList = 1;
+    }
     updateLogListTableDisplay();
 }
 
@@ -479,7 +485,8 @@ void AShareDividendDifferentiatedDeclaration::updateLogListTableDisplay() {
         ui->tableWidget_3->clearContents(); // 清空表格内容
         ui->tableWidget_3->setRowCount(numRows);
         // 执行查询
-        query.prepare("SELECT * FROM AShareDividendDifferentiatedLogList LIMIT :startRow, :numRows");
+//        query.prepare("SELECT * FROM AShareDividendDifferentiatedLogList LIMIT :startRow, :numRows");
+        query.prepare("SELECT * FROM AShareDividendDifferentiatedLogList ORDER BY AShareDividendDifferentiatedLogList DESC LIMIT :startRow, :numRows");
         query.bindValue(":startRow", startRow);
         query.bindValue(":numRows", numRows);
         if (query.exec()) {

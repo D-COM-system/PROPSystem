@@ -26,7 +26,7 @@ AShareDividendDifferentiatedSubmitEshade::AShareDividendDifferentiatedSubmitEsha
     ui->tableWidget_2->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter);//表头字体居中
     ui->tableWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);//单元格不可编辑
     // 设置表头的底色和文字加粗
-    QString styleSheet = "QHeaderView::section { background-color: #f5f5f5; font-weight: bold; }";
+    QString styleSheet = "QHeaderView::section { background-color: rgb(219,241,253); font-weight: bold; border: 1px solid white; }";
     // 将样式表应用于表格的表头
     ui->tableWidget_2->horizontalHeader()->setStyleSheet(styleSheet);
     // 获取当前时间
