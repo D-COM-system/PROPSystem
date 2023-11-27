@@ -68,26 +68,26 @@ FundBalanceQuery::FundBalanceQuery(QWidget *parent) :
     totalPages = ((totalRows + pageSize - 1) / pageSize);
 
 
-    ui->tableWidget_2->clear(); // 清空表格内容
+
     QStringList headerLabels;
     headerLabels << "序号" << "业务日期" << "资金账户" << "资金账户名称" << "币种"
                  << "账户余额" << "可用余额" << "尚未支付金额" << "透支金额"
                  << "最低备付" << "冻结金额" << "余额积数" << "结息利率"
-                 << "最低备付积数" << "结果代码" << "结果说明";
-
-    ui->tableWidget_2->setColumnCount(17);
+                 << "最低备付积数" << "结果代码" << "结果说明" << "";
+    ui->tableWidget_2->clear(); // 清空表格内容
+    ui->tableWidget_2->setColumnCount(headerLabels.size());
     ui->tableWidget_2->setHorizontalHeaderLabels(headerLabels);
     ui->tableWidget_2->resizeColumnsToContents();
     ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget_2->setRowCount(pageSize);
     //让tableWidget内容中的每个元素居中
     ui->tableWidget_2->setSelectionBehavior(QAbstractItemView::SelectRows);//设置整行选中
-    //ui->tableWidget_2->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter);//表头字体居中
+    ui->tableWidget_2->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter);//表头字体居中
     ui->tableWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);//单元格不可编辑
     // 设置表头的底色和文字加粗
     QString styleSheet = "QHeaderView::section { background-color: #f5f5f5; font-weight: bold; }";
     // 将样式表应用于表格的表头
-    //ui->tableWidget_2->horizontalHeader()->setStyleSheet(styleSheet);
+    ui->tableWidget_2->horizontalHeader()->setStyleSheet(styleSheet);
     //初始化勾选
     selectedRows.resize(totalRows);
     for (int row = 0; row < totalRows; ++row) {
