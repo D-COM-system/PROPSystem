@@ -17,6 +17,8 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QMessageBox>
+#include "balancequery.h"
+#include "ui_balancequery.h"
 
 namespace Ui {
 class FundBalanceQuery;
@@ -42,8 +44,8 @@ public:
 
 private slots:
     void selectRows();
-    void previousPageButton_clicked();
-    void nextPageButton_clicked();
+    void Balancequery();
+    //void nextPageButton_clicked();
     void AllCheckbox(bool checked);
     void siftToData();
 };
