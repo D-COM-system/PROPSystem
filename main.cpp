@@ -4,10 +4,10 @@
 #include "AShareDividendDifferentiated.cpp"
 #include "AShareDividendDifferentiatedEshade.cpp"
 #include "AShareDividendDifferentiatedLogList.cpp"
+#include "fundbalancequery.cpp"
 #include "RTGS_instructions.cpp"
 #include "MaximumQuotaRoutineDeclarationDataTable.cpp"
 #include "dashboard.h"
-
 #include <QApplication>
 #include <QCoreApplication>
 #include <QDir>
@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
     createUser(":/Data/user.xlsx",QCoreApplication::applicationDirPath());
     createRTGS_instructions(":/Data/RTGS.xlsx",QCoreApplication::applicationDirPath());
     createMaximumQuotaRoutineDeclarationDataTable(":/Data/shanghaihighquery.xlsx",QCoreApplication::applicationDirPath());
+    createfundbalancequery(":/Data/PROP.xlsx",QCoreApplication::applicationDirPath());
     createAShareDividendDifferentiated(QCoreApplication::applicationDirPath());
     createAShareDividendDifferentiatedEshade(QCoreApplication::applicationDirPath());
     createAShareDividendDifferentiatedLogList(QCoreApplication::applicationDirPath());

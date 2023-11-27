@@ -17,8 +17,6 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QMessageBox>
-#include "balancequery.h"
-#include "ui_balancequery.h"
 
 namespace Ui {
 class FundBalanceQuery;

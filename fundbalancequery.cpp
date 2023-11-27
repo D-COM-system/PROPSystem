@@ -121,43 +121,6 @@ void FundBalanceQuery::updateTableDisplay()
                 checkBox->setChecked(false);
             }
             ui->tableWidget_2->setCellWidget(rowIndex, 0, checkBox);
-//            connect(checkBox, &QCheckBox::clicked, this, &FundBalanceQuery::selectRows);
-//            connect(checkBox, &QCheckBox::clicked, this, &FundBalanceQuery::AllCheckbox); //全选
-//            QTableWidgetItem *item1 = new QTableWidgetItem(query.value(1).toString());
-//            QTableWidgetItem *item2 = new QTableWidgetItem(query.value(2).toString());
-//            QTableWidgetItem *item3 = new QTableWidgetItem(query.value(3).toString());
-//            QTableWidgetItem *item4 = new QTableWidgetItem(query.value(4).toString());
-//            QTableWidgetItem *item5 = new QTableWidgetItem(query.value(5).toString());
-//            QTableWidgetItem *item6 = new QTableWidgetItem(query.value(6).toString());
-//            QTableWidgetItem *item7 = new QTableWidgetItem(query.value(7).toString());
-//            QTableWidgetItem *item8 = new QTableWidgetItem(query.value(8).toString());
-//            QPushButton *balancequery = new QPushButton("余额查询>>");
-//            balancequery->setStyleSheet("QPushButton{color:green;background-color:rgba(0,0,0,0);}"
-//                                        "QPushButton:pressed{background-color:rgb(51,129,172)}");
-
-//            QTableWidgetItem *emptyItem1 = new QTableWidgetItem("");
-//            QTableWidgetItem *emptyItem2 = new QTableWidgetItem("");
-
-//            ui->tableWidget_2->setItem(rowIndex, 1, item1);
-//            ui->tableWidget_2->setItem(rowIndex, 2, item2);
-//            ui->tableWidget_2->setItem(rowIndex, 3, item3);
-//            ui->tableWidget_2->setItem(rowIndex, 4, item4);
-//            ui->tableWidget_2->setItem(rowIndex, 5, item5);
-//            ui->tableWidget_2->setItem(rowIndex, 6, item6);
-//            ui->tableWidget_2->setItem(rowIndex, 7, item7);
-//            ui->tableWidget_2->setItem(rowIndex, 8, item8);
-//            ui->tableWidget_2->setCellWidget(rowIndex, 9, balancequery);
-//            emptyItem1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            item1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            item2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            emptyItem2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            item3->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            item4->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            item5->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            item6->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            item7->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            item8->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
-//            rowIndex++;
 
         }
 
@@ -415,4 +378,97 @@ void FundBalanceQuery::siftToData() {  //查询
         totalPages = ((totalRows + pageSize - 1) / pageSize);
         updateTableDisplay();
     }
+}
+void createfundbalancequery(QString excelFilePath, QString dirPath){
+    QString dbName = "database.db";
+    QString dbPath = dirPath + "./" + dbName;  // Use a relative path
+//    qDebug() << dbPath;
+
+    // Create database connection
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbPath);
+
+    if (!db.open()) {
+        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
+        return;
+    }
+    // Load the Excel file
+    QXlsx::Document excelFile(excelFilePath);
+
+    // Assuming the data is in the first sheet
+    QXlsx::Worksheet* sheet = excelFile.currentWorksheet();
+
+    QSqlQuery query;
+    QString createQuery = "CREATE TABLE BalanceQuiry ("
+                          "ID VARCHAR(64) PRIMARY KEY,"
+                          "BankCode VARCHAR(10) DEFAULT '0100',"
+                          "Currency VARCHAR(10) DEFAULT 'CNY',"
+                          "Account VARCHAR(40),"
+                          "Balance DECIMAL(17, 2),"
+                          "AvailableBalance DECIMAL(17, 2),,"
+                          "OverdraftAmount DECIMAL(17, 2),"
+                          "NotPaidAmount DECIMAL(17, 2),"
+                          "MinReserve DECIMAL(17, 2),"
+                          "FreezeAmount DECIMAL(17, 2),"
+                          "BalanceAccumulation DECIMAL(17, 2),"
+                          "InterestRate DECIMAL(17, 8),"
+                          "BusinessDate DATE,"
+                          "MinReserveAccumulation DECIMAL(17, 2),"
+                          "ResultCode VARCHAR(10),"
+                          "ResultDescription VARCHAR(10)"
+                                      ")";
+    if (!query.exec(createQuery)) {
+        qDebug() << "创建表失败：" << query.lastError().text();
+        return;
+    }
+    //bool createTableSuccess = true;
+    for (int row = 2; row <= sheet->dimension().lastRow(); ++row) {
+        QString PROPID = "";
+        QString BankCode = sheet->read(row, 2).toString();
+        QString Currency = sheet->read(row, 3).toString();
+        QString Account = sheet->read(row, 4).toString();
+        QString Balance = sheet->read(row, 5).toString();
+        QString AvailableBalance = sheet->read(row, 6).toString();
+        QString OverdraftAmount = sheet->read(row, 7).toString();
+        QString NotPaidAmount = sheet->read(row, 8).toString();
+        QString MinReserve = sheet->read(row, 9).toString();
+        QString FreezeAmount = sheet->read(row, 10).toString();
+        QString BalanceAccumulation = sheet->read(row, 11).toString();
+        QString InterestRate = sheet->read(row, 12).toString();
+        QString BusinessDate = sheet->read(row, 13).toString();
+        QString MinReserveAccumulation = sheet->read(row, 14).toString();
+        QString ResultCode = sheet->read(row, 15).toString();
+        QString ResultDescription = sheet->read(row, 16).toString();
+
+        // 检查所有元素是否都为空
+        if (PROPID.isEmpty() && BankCode.isEmpty() && Currency.isEmpty() && Account.isEmpty() && Balance.isEmpty() && AvailableBalance.isEmpty() && OverdraftAmount.isEmpty() && NotPaidAmount.isEmpty() &&
+                MinReserve.isEmpty() && FreezeAmount.isEmpty() && BalanceAccumulation.isEmpty() && InterestRate.isEmpty() && BusinessDate.isEmpty() && MinReserveAccumulation.isEmpty() &&
+                ResultCode.isEmpty() && ResultDescription.isEmpty()) {
+            continue;  // 跳过当前行，不执行插入操作
+        }
+
+        QString insertQuery = "INSERT INTO BalanceQuiry (PROPID,BankCode, Currency, Account,Balance,AvailableBalance,OverdraftAmount,NotPaidAmount,MinReserve,FreezeAmount,BalanceAccumulation,InterestRate,BusinessDate,MinReserveAccumulation,ResultCode,ResultDescription) "
+                              "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        query.prepare(insertQuery);
+        query.addBindValue(PROPID);
+        query.addBindValue(BankCode);
+        query.addBindValue(Currency);
+        query.addBindValue(Account);
+        query.addBindValue(Balance);
+        query.addBindValue(AvailableBalance);
+        query.addBindValue(OverdraftAmount);
+        query.addBindValue(NotPaidAmount);
+        query.addBindValue(MinReserve);
+        query.addBindValue(FreezeAmount);
+        query.addBindValue(BalanceAccumulation);
+        query.addBindValue(InterestRate);
+        query.addBindValue(BusinessDate);
+        query.addBindValue(MinReserveAccumulation);
+        query.addBindValue(ResultCode);
+        query.addBindValue(ResultDescription);
+
+    }
+
+
+    db.close();
 }

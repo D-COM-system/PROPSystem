@@ -899,57 +899,6 @@ p, li { white-space: pre-wrap; }
         <bool>false</bool>
        </attribute>
       </widget>
-      <widget class="QComboBox" name="comboBox_2">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>400</x>
-         <y>115</y>
-         <width>201</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border: 1px solid rgb(245,245,245);
-background: transparent;</string>
-       </property>
-       <property name="editable">
-        <bool>false</bool>
-       </property>
-       <property name="currentText">
-        <string>0400000001000109574</string>
-       </property>
-       <property name="frame">
-        <bool>true</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>0400000001000109574</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>0400000002000109575</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>0400000003000109576</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>0400000004000109577</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>0400000005000109578</string>
-        </property>
-       </item>
-      </widget>
       <widget class="QTextEdit" name="textEdit_4">
        <property name="geometry">
         <rect>
@@ -1509,6 +1458,181 @@ p, li { white-space: pre-wrap; }
          <string>确定</string>
         </property>
        </widget>
+      </widget>
+      <widget class="QComboBox" name="comboBox_2">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>110</y>
+         <width>201</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 1px solid rgb(245,245,245);
+background: transparent;</string>
+       </property>
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>0400000001000109574</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000002000109575</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000003000109576</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000004000109577</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000005000109578</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000006000109579</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000007000109580</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000008000109581</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000009000109582</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000010000109583</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000011000109584</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000012000109585</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000013000109586</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000014000109587</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000015000109588</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000016000109589</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000017000109590</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000018000109591</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000019000109592</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000020000109593</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000021000109594</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000022000109595</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000023000109596</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000024000109597</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000025000109598</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000026000109599</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000027000109600</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000028000109601</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000029000109602</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>0400000030000109603</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
       </widget>
      </widget>
      <zorder>lineEdit_5</zorder>
