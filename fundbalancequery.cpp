@@ -130,13 +130,17 @@ void FundBalanceQuery::updateTableDisplay()
         int rowIndex = 0; // 当前页内的行索引
 
         while (query.next()) {
+            QTableWidgetItem *numberItem = new QTableWidgetItem(QString::number(startRow + rowIndex + 1));
             QCheckBox *checkBox = new QCheckBox();
+
+
             if(selectedRows[startRow + rowIndex] == 1) {
                 checkBox->setChecked(true);
             } else {
                 checkBox->setChecked(false);
             }
-            ui->tableWidget_2->setCellWidget(rowIndex, 0, checkBox);
+            ui->tableWidget_2->setItem(rowIndex, 0, numberItem);
+            ui->tableWidget_2->setCellWidget(rowIndex, 1, checkBox);
 
         }
 
@@ -156,7 +160,7 @@ void FundBalanceQuery::removeEmptyRows(QTableWidget *tableWidget)
 {
     for (int row = tableWidget->rowCount() - 1; row >= 0; --row) {
         bool isEmpty = true;
-        for (int col = 0; col < tableWidget->columnCount(); ++col) {
+        for (int col = 1; col < tableWidget->columnCount(); ++col) {
             QTableWidgetItem *item = tableWidget->item(row, col);
             if (item && !item->text().isEmpty()) {
                 isEmpty = false;
@@ -297,6 +301,7 @@ void FundBalanceQuery::siftToData() {  //查询
         query.bindValue(":startRow", startRow);
         query.bindValue(":numRows", numRows);
         qDebug() << queryString;
+        ui->comboBox_4->clear();
 
         if (query.exec()) {
             int rowIndex = 0; // 当前页内的行索引
@@ -310,7 +315,7 @@ void FundBalanceQuery::siftToData() {  //查询
                 layoutCheckBox->setMargin(0);
                 layoutCheckBox->setAlignment(checkBox, Qt::AlignCenter);
                 widget->setLayout(layoutCheckBox);
-                ui->tableWidget_2->setCellWidget(rowIndex, 0, widget);
+
                 connect(checkBox, &QCheckBox::clicked, this, &FundBalanceQuery::selectRows);
                 connect(checkBox, &QCheckBox::toggled, this, &FundBalanceQuery::AllCheckbox);
 
@@ -330,11 +335,17 @@ void FundBalanceQuery::siftToData() {  //查询
                 QTableWidgetItem *item14 = new QTableWidgetItem(query.value(14).toString());//最低备付积数
                 QTableWidgetItem *item15 = new QTableWidgetItem(query.value(15).toString());//结果代码
                 QTableWidgetItem *item16 = new QTableWidgetItem(query.value(16).toString());//结果说明
+                QTableWidgetItem *sequence = new QTableWidgetItem("1");
 
                 QPushButton *balancequery = new QPushButton("余额查询>>");
                 balancequery->setStyleSheet("QPushButton{color:green;background-color:rgba(0,0,0,0);}"
                                             "QPushButton:pressed{background-color:rgb(51,129,172)}");
-                ui->comboBox_4->setCurrentText(query.value(4).toString());//?没实现
+                //ui->comboBox_4->setCurrentText(query.value(4).toString());//?没实现
+                QString accountName = query.value(4).toString();
+                ui->comboBox_4->addItem(accountName);
+
+
+                ui->tableWidget_2->setItem(rowIndex, 0, sequence);
                 ui->tableWidget_2->setItem(rowIndex, 1, item13);
                 ui->tableWidget_2->setItem(rowIndex, 2, item3);
                 ui->tableWidget_2->setItem(rowIndex, 3, item4);
@@ -352,6 +363,7 @@ void FundBalanceQuery::siftToData() {  //查询
                 ui->tableWidget_2->setItem(rowIndex, 15, item16);
                 ui->tableWidget_2->setCellWidget(rowIndex, 16, balancequery);
 
+                sequence->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
                 item1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
                 item2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);              
                 item3->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
